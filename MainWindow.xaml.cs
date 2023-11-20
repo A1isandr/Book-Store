@@ -24,5 +24,39 @@ namespace Book_Store
 		{
 			InitializeComponent();
 		}
+
+		private void Header_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			DragMove();
+		}
+
+		private void CloseWindowButton_Click(object sender, RoutedEventArgs e)
+		{
+			Close();
+		}
+
+		private void MaxWindowButton_Click(object sender, RoutedEventArgs e)
+		{
+			WindowState = (WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized);
+		}
+
+		private void MinWindowButton_Click(object sender, RoutedEventArgs e)
+		{
+			WindowState = WindowState.Minimized;
+		}
+
+		private void MinMaxMenuButton_Click(object sender, RoutedEventArgs e)
+		{
+			StoreMenu.Visibility = Visibility.Collapsed;
+			Main.ColumnDefinitions[1].Width = new GridLength(Width, GridUnitType.Pixel);
+			/*if (StoreMenu.Width != 0)
+			{
+				StoreMenu.Width = 0;
+			}
+			else
+			{
+				StoreMenu.Width = Width / 4;
+			}*/
+		}
 	}
 }

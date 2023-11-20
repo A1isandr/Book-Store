@@ -1,0 +1,28 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Style x:Key="SearchButton"
+        BasedOn="{StaticResource {x:Type Button}}"
+        TargetType="{x:Type Button}">
+
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border VerticalAlignment="Stretch"
+                              HorizontalAlignment="Stretch"
+                              Background="White"
+                              CornerRadius="0, 10, 10, 0">
+
+                            <Image Source="/img/search.png"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Width="20"
+                                   Height="20"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>
+</ResourceDictionary>
