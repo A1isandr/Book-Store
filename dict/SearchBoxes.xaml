@@ -18,8 +18,9 @@
                                 Text="{TemplateBinding Text}"
                                 BorderThickness="0"
                                 Background="Transparent"
+                                VerticalAlignment="Center"
                                 VerticalContentAlignment="Center"
-                                Padding="5"
+                                Padding="7"
                                 Foreground="#CFCFCF"/>
 
                             <TextBlock 
