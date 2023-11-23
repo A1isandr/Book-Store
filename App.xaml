@@ -9,7 +9,6 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="dict\HeaderButtons.xaml" />
-                <ResourceDictionary Source="dict\Buttons.xaml" />
                 <ResourceDictionary Source="dict\TextBlocks.xaml" />
                 <ResourceDictionary Source="dict\ScrollBars.xaml" />
                 <ResourceDictionary Source="dict\SearchBoxes.xaml" />

@@ -7,4 +7,6 @@
                      Color="#ffdbaf"/>
     <SolidColorBrush x:Key="ControlTopBarBackgroundBrush"
                      Color="#c97b42"/>
+    <SolidColorBrush x:Key="BaseForegroundColor"
+                     Color="White"/>
 </ResourceDictionary>

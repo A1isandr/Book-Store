@@ -5,7 +5,7 @@
         <Setter Property="Control.Foreground" Value="White" />
         <Setter Property="Control.FontSize" Value="12" />
         <Setter Property="Control.BorderThickness" Value="0" />
-        <Setter Property="Control.Background" Value="#242424" />
+        <Setter Property="Control.Background" Value="Transparent" />
         <Setter Property="Control.Width" Value="45" />
         <Setter Property="Control.Height" Value="35" />
         <Setter Property="Control.VerticalAlignment" Value="Top" />

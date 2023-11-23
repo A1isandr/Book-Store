@@ -10,21 +10,22 @@
     <Grid>
         
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="8*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="9*"/>
         </Grid.RowDefinitions>
 
         <Border Name="TopBar"
             Grid.Row="0"
             CornerRadius="0, 0, 10, 10"
             Background="{StaticResource ControlTopBarBackgroundBrush}"
-            Padding="20, 0, 20, 0">
+            Padding="20, 10, 20, 10">
 
             <Grid>
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 
                 <TextBox Name="SearchBar"
@@ -39,15 +40,40 @@
                     Width="30"
                     Height="30"
                     Style="{StaticResource SearchButton}"/>
+
+                <TextBlock Name="Title"
+                    Grid.Column="2"
+                    Text="Магазин"
+                    FontFamily="/fnt/#Lobster"
+                    FontSize="25"
+                    Foreground="{StaticResource BaseForegroundColor}"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"/>
+
             </Grid>
         </Border>
 
-        <Grid Name="Content"
+        <Grid Name="Main"
             Grid.Row="1">
 
-            <TextBlock Grid.Row="1"
-                Text="This is The Shop"
-                VerticalAlignment="Center"/>
+            <ListBox x:Name="BooksList" 
+                     Grid.Row="1" 
+                     Background="{StaticResource ControlBackgroundBrush}" 
+                     ItemsSource="{Binding Books}">
+                
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Id}" FontSize="13" Foreground="Black"/>
+                            <TextBlock Text="{Binding Name}" FontSize="13" Foreground="Black"/>
+                            <TextBlock Text="{Binding Description}" FontSize="13" Foreground="Black"/>
+                            <TextBlock Text="{Binding Author}" FontSize="13" Foreground="Black"/>
+                            <TextBlock Text="{Binding Price}" FontSize="13" Foreground="Black"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
         </Grid>
         
     </Grid>

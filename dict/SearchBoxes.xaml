@@ -7,21 +7,23 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
-                    <Border Background="#353340"
+                    <Border Background="#521808"
                         CornerRadius="10, 0, 0, 10">
 
                         <Grid>
                             <Rectangle StrokeThickness="1"/>
 
                             <TextBox Name="SearchBox"
-                                Margin="1"
                                 Text="{TemplateBinding Text}"
+                                FontFamily="/fnt/#Lobster"
+                                FontSize="14"
                                 BorderThickness="0"
                                 Background="Transparent"
                                 VerticalAlignment="Center"
                                 VerticalContentAlignment="Center"
                                 Padding="7"
-                                Foreground="#CFCFCF"/>
+                                Margin="10, 0, 0, 0"
+                                Foreground="White"/>
 
                             <TextBlock 
                                 IsHitTestVisible="False"

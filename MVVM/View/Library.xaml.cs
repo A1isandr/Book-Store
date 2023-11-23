@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Book_Store.MVVM.ViewModel;
 
 namespace Book_Store.MVVM.View
 {
@@ -23,6 +24,7 @@ namespace Book_Store.MVVM.View
         public Library()
         {
             InitializeComponent();
+            DataContext = new LibraryViewModel();
         }
     }
 }

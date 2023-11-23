@@ -2,9 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <SolidColorBrush x:Key="MenuButtonToggledBrush"
-                 Color="#521808"/>
+                Color="#521808"/>
     <SolidColorBrush x:Key="MenuButtonMouseOverBrush"
-             Color="#824227"/>
+                Color="#824227"/>
 
     <Style x:Key="MenuButton" 
            TargetType="{x:Type ToggleButton}"
@@ -20,7 +20,7 @@
 
                             <TextBlock Text="{TemplateBinding Property=Content}"
                                 FontFamily="/fnt/#Lobster"
-                                FontSize="16"
+                                FontSize="20"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Left"
                                 Padding="20, 0, 0, 0"/>
