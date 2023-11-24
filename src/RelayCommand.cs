@@ -7,6 +7,9 @@ using System.Windows.Input;
 
 namespace Book_Store.src
 {
+	/// <summary>
+	/// Describes relay command
+	/// </summary>
 	class RelayCommand : ICommand
 	{
 		private Action<object> _execute;

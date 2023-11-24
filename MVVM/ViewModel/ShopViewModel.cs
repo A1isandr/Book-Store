@@ -13,7 +13,7 @@ namespace Book_Store.MVVM.ViewModel
 {
     class ShopViewModel
     {
-		ShopContext db = new();
+		StoreContext db = new();
 		public ObservableCollection<ShopBook> Books { get; set; }
 
 		RelayCommand? addCommand;
@@ -22,8 +22,8 @@ namespace Book_Store.MVVM.ViewModel
 		public ShopViewModel()
 		{
 			db.Database.EnsureCreated();
-			db.Books.Load();
-			Books = db.Books.Local.ToObservableCollection();
+			db.ShopBooks.Load();
+			Books = db.ShopBooks.Local.ToObservableCollection();
 		}
 
 		public RelayCommand AddCommand
@@ -32,8 +32,8 @@ namespace Book_Store.MVVM.ViewModel
 			{
 				return addCommand ??= new RelayCommand((o) =>
 				{
-					ShopBook book = new();
-					db.Books.Add(book);
+					ShopBook book = new ShopBook();
+					db.ShopBooks.Add(book);
 					db.SaveChanges();
 				});
 			}
@@ -45,8 +45,8 @@ namespace Book_Store.MVVM.ViewModel
 			{
 				return deleteCommand ??= new RelayCommand((o) =>
 				{
-					ShopBook book = new();
-					db.Books.Add(book);
+                    ShopBook book = new ShopBook();
+                    db.ShopBooks.Add(book);
 					db.SaveChanges();
 				});
 

@@ -56,23 +56,23 @@
         <Grid Name="Main"
             Grid.Row="1">
 
-            <ListBox x:Name="BooksList" 
+            <ListView x:Name="BooksList" 
                      Grid.Row="1" 
-                     Background="{StaticResource ControlBackgroundBrush}" 
+                     Background="#242424"
+                     Foreground="Black"
+                     FontFamily="Roboto"
                      ItemsSource="{Binding Books}">
-                
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Id}" FontSize="13" Foreground="Black"/>
-                            <TextBlock Text="{Binding Name}" FontSize="13" Foreground="Black"/>
-                            <TextBlock Text="{Binding Description}" FontSize="13" Foreground="Black"/>
-                            <TextBlock Text="{Binding Author}" FontSize="13" Foreground="Black"/>
-                            <TextBlock Text="{Binding Price}" FontSize="13" Foreground="Black"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}" />
+                        <GridViewColumn Header="Author" DisplayMemberBinding="{Binding Author}" />
+                        <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
 
         </Grid>
         

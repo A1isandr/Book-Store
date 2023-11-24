@@ -9,44 +9,12 @@ using System.Threading.Tasks;
 
 namespace Book_Store.MVVM.Model
 {
-	class LibraryBook : ObservableObject, IBook
+	/// <summary>
+	/// Describes behavior of library book
+	/// </summary>
+	class LibraryBook : Book
 	{
-		public int Id { get; set; }
-
-		private string? name;
-		private string? description;
-		private string? author;
 		private DateTime date_added;
-
-		public string? Name
-		{
-			get => name;
-			set
-			{
-				name = value;
-				OnPropertyChanged("Name");
-			}
-		}
-
-		public string? Description
-		{
-			get => description;
-			set
-			{
-				description = value;
-				OnPropertyChanged("Description");
-			}
-		}
-
-		public string? Author
-		{
-			get => author;
-			set
-			{
-				author = value;
-				OnPropertyChanged("Author");
-			}
-		}
 
 		public DateTime DateAdded
 		{

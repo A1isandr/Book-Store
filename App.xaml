@@ -15,6 +15,7 @@
                 <ResourceDictionary Source="dict\MenuButton.xaml" />
                 <ResourceDictionary Source="dict\SearchButtons.xaml" />
                 <ResourceDictionary Source="dict\color-scheme\ColorScheme.xaml" />
+                <ResourceDictionary Source="dict\GridView.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type vm:ShopViewModel}">

@@ -9,44 +9,12 @@ using Book_Store.src;
 
 namespace Book_Store.MVVM.Model
 {
-	class ShopBook : ObservableObject, IBook
+    /// <summary>
+    /// Describes behavior of shop book
+    /// </summary>
+    class ShopBook : Book
 	{
-		public int Id { get; set; }
-
-		private string? name;
-		private string? description;
-		private string? author;
 		private decimal price;
-
-		public string? Name
-		{
-			get => name;
-			set
-			{
-				name = value;
-				OnPropertyChanged("Name");
-			}
-		}
-
-		public string? Description
-		{
-			get => description;
-			set
-			{
-				description = value;
-				OnPropertyChanged("Description");
-			}
-		}
-
-		public string? Author
-		{
-			get => author;
-			set
-			{
-				author = value;
-				OnPropertyChanged("Author");
-			}
-		}
 
 		/// <summary>
 		/// Book's price.

@@ -8,21 +8,17 @@ using System.Threading.Tasks;
 
 namespace Book_Store.src
 {
-    class ShopContext : DbContext
+	/// <summary>
+	/// Describes context of store
+	/// </summary>
+    class StoreContext : DbContext
     {
-		public DbSet<ShopBook> Books { get; set; } = null!;
-		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		public DbSet<ShopBook> ShopBooks { get; set; } = null!;
+        public DbSet<LibraryBook> LibraryBooks { get; set; } = null!;
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			optionsBuilder.UseSqlite(@"Data Source=..\..\..\db\shop.db");
-		}
-	}
-
-	class LibraryContext : DbContext
-	{
-		public DbSet<LibraryBook> Books { get; set; } = null!;
-		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-		{
-			optionsBuilder.UseSqlite(@"Data Source=..\..\..\db\library.db");
-		}
+            optionsBuilder.UseSqlite(@"Data Source=..\..\..\db\library.db");
+        }
 	}
 }

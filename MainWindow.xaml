@@ -15,7 +15,7 @@
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         Title="Book Store" 
-        Height="800" Width="1200"
+        Height="700" Width="1000"
         MinHeight="400" MinWidth="600">
     <WindowChrome.WindowChrome>
         <WindowChrome 

@@ -44,19 +44,5 @@ namespace Book_Store
 		{
 			WindowState = WindowState.Minimized;
 		}
-
-		private void MinMaxMenuButton_Click(object sender, RoutedEventArgs e)
-		{
-			StoreMenu.Visibility = Visibility.Collapsed;
-			Main.ColumnDefinitions[1].Width = new GridLength(Width, GridUnitType.Pixel);
-			/*if (StoreMenu.Width != 0)
-			{
-				StoreMenu.Width = 0;
-			}
-			else
-			{
-				StoreMenu.Width = Width / 4;
-			}*/
-		}
 	}
 }
