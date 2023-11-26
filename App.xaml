@@ -5,6 +5,7 @@
              xmlns:vm="clr-namespace:Book_Store.MVVM.ViewModel"
              xmlns:v="clr-namespace:Book_Store.MVVM.View"
              StartupUri="MainWindow.xaml">
+    
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -16,6 +17,7 @@
                 <ResourceDictionary Source="dict\SearchButtons.xaml" />
                 <ResourceDictionary Source="dict\color-scheme\ColorScheme.xaml" />
                 <ResourceDictionary Source="dict\GridView.xaml" />
+                <ResourceDictionary Source="dict\Book.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type vm:ShopViewModel}">

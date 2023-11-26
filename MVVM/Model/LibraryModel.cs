@@ -14,9 +14,12 @@ namespace Book_Store.MVVM.Model
 	/// </summary>
 	class LibraryBook : Book
 	{
-		private DateTime date_added;
+		private string date_added;
 
-		public DateTime DateAdded
+		/// <summary>
+		/// Book's purchase date 
+		/// </summary>
+		public string DateAdded
 		{
 			get => date_added;
 			set

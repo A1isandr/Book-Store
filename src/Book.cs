@@ -7,26 +7,48 @@ using System.Threading.Tasks;
 namespace Book_Store.src
 {
     /// <summary>
-    /// Describes basic behavior for a book
+    /// Describes basic behavior of a book
     /// </summary>
     class Book : ObservableObject, IBook
     {
         public int Id {  get; set; }
-        protected string? name;
-        protected string? description;
+        protected string? title;
+		protected string? genre;
+		protected string? publication_date;
+		protected string? description;
         protected string? author;
 
-        public string? Name
+        public string? Title
         {
-            get => name;
+            get => title;
             set
             {
-                name = value;
-                OnPropertyChanged("Name");
+                title = value;
+                OnPropertyChanged("Title");
             }
         }
 
-        public string? Description
+		public string? Genre
+		{
+			get => genre;
+			set
+			{
+				genre = value;
+				OnPropertyChanged("Genre");
+			}
+		}
+
+		public string? PublicationDate
+		{
+			get => publication_date;
+			set
+			{
+				publication_date = value;
+				OnPropertyChanged("Title");
+			}
+		}
+
+		public string? Description
         {
             get => description;
             set

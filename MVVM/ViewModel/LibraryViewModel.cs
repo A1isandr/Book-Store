@@ -48,11 +48,7 @@ namespace Book_Store.MVVM.ViewModel
 					db.LibraryBooks.Add(book);
 					db.SaveChanges();
 				});
-
 			}
 		}
-
-
-
 	}
 }

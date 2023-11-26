@@ -10,8 +10,15 @@
 
   <ItemGroup>
     <None Remove="fnt\Lobster-Regular.ttf" />
+    <None Remove="fnt\Oswald-VariableFont.ttf" />
+    <None Remove="fnt\SofiaSansSemiCondensed-VariableFont.ttf" />
+    <None Remove="fnt\SofiaSansSemiCondensed-VariableFont_wght.ttf" />
+    <None Remove="img\1984.png" />
+    <None Remove="img\book.png" />
     <None Remove="img\search.png" />
     <None Remove="img\shopping-cart.png" />
+    <None Remove="img\w-p.jpg" />
+    <None Remove="img\w-p.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,13 +27,26 @@
 
   <ItemGroup>
     <Resource Include="fnt\Lobster-Regular.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="fnt\Oswald-VariableFont.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="fnt\SofiaSansSemiCondensed-VariableFont.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\1984.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\book.png" />
     <Resource Include="img\search.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="img\shopping-cart.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\w-p.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 

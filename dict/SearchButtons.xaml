@@ -9,14 +9,11 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border VerticalAlignment="Stretch"
-                              HorizontalAlignment="Stretch"
+                        <Border
                               Background="White"
                               CornerRadius="0, 10, 10, 0">
 
                             <Image Source="/img/search.png"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
                                    Width="20"
                                    Height="20"/>
                         </Border>
@@ -38,8 +35,7 @@
                             BlurRadius="20" 
                             Opacity="0.8" 
                             ShadowDepth="0"
-                            Direction="0"
-                        >
+                            Direction="0">
 
                         </DropShadowEffect>
                     </Setter.Value>

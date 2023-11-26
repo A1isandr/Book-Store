@@ -16,13 +16,21 @@ namespace Book_Store.src
         /// </summary>
         public int Id { get; set; }
         /// <summary>
-        /// Book's name.
+        /// Book's title.
         /// </summary>
-        public string? Name { get; set; }
+        public string? Title { get; set; }
         /// <summary>
-        /// Book's description.
+        /// Book's genre
         /// </summary>
-        public string? Description { get; set; }
+		public string? Genre { get; set; }
+        /// <summary>
+        /// Book's first publication date
+        /// </summary>
+        public string? PublicationDate { get; set; }
+		/// <summary>
+		/// Book's description.
+		/// </summary>
+		public string? Description { get; set; }
         /// <summary>
         /// Book's author.
         /// </summary>

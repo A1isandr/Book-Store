@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Book_Store.MVVM.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Windows;
+using System.Data.SqlTypes;
 
 namespace Book_Store.MVVM.ViewModel
 {
@@ -49,7 +50,6 @@ namespace Book_Store.MVVM.ViewModel
                     db.ShopBooks.Add(book);
 					db.SaveChanges();
 				});
-
 			}
 		}
 	}

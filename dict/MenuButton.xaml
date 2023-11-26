@@ -14,17 +14,19 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="RadioButton">
-                        <Grid VerticalAlignment="Stretch"
-                              HorizontalAlignment="Stretch"
-                              Background="{TemplateBinding Background}">
+                        <Border>
+                            <Grid VerticalAlignment="Stretch"
+                                      HorizontalAlignment="Stretch"
+                                      Background="{TemplateBinding Background}">
 
-                            <TextBlock Text="{TemplateBinding Property=Content}"
-                                FontFamily="/fnt/#Lobster"
-                                FontSize="20"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Left"
-                                Padding="20, 0, 0, 0"/>
-                        </Grid>
+                                <TextBlock Text="{TemplateBinding Property=Content}"
+                                        FontFamily="/fnt/#Lobster"
+                                        FontSize="20"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+                                        Padding="20, 0, 0, 0"/>
+                            </Grid>
+                        </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>

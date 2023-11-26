@@ -14,11 +14,11 @@ namespace Book_Store.src
     class StoreContext : DbContext
     {
 		public DbSet<ShopBook> ShopBooks { get; set; } = null!;
-        public DbSet<LibraryBook> LibraryBooks { get; set; } = null!;
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		public DbSet<LibraryBook> LibraryBooks { get; set; } = null!;
+
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			optionsBuilder.UseSqlite(@"Data Source=..\..\..\db\shop.db");
-            optionsBuilder.UseSqlite(@"Data Source=..\..\..\db\library.db");
+			optionsBuilder.UseSqlite(@"Data Source=..\..\..\db\store.db");
         }
 	}
 }

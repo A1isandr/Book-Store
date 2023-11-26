@@ -8,7 +8,6 @@
              Background="{StaticResource ControlBackgroundBrush}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="9*"/>
@@ -20,61 +19,72 @@
             Background="{StaticResource ControlTopBarBackgroundBrush}"
             Padding="20, 10, 20, 10">
 
-            <Grid>
+            <Border.Effect>
+                <DropShadowEffect
+                    Color="Black" 
+                    BlurRadius="10" 
+                    Opacity="0.5" 
+                    ShadowDepth="0"
+                    Direction="0"/>
+            </Border.Effect>
 
+            <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                
+
                 <TextBox Name="SearchBar"
                     Grid.Column="0"
-                    Width="200"
+                    Width="250"
                     Height="30"
                     HorizontalAlignment="Left"
                     Style="{StaticResource SearchBox}"/>
 
-                <Button Name="SearchButton"
-                    Grid.Column="1"
-                    Width="30"
-                    Height="30"
-                    Style="{StaticResource SearchButton}"/>
-
                 <TextBlock Name="Title"
-                    Grid.Column="2"
+                    Grid.Column="1"
                     Text="Магазин"
                     FontFamily="/fnt/#Lobster"
                     FontSize="25"
                     Foreground="{StaticResource BaseForegroundColor}"
-                    HorizontalAlignment="Stretch"
                     VerticalAlignment="Center"/>
-
             </Grid>
         </Border>
 
         <Grid Name="Main"
             Grid.Row="1">
 
-            <ListView x:Name="BooksList" 
-                     Grid.Row="1" 
-                     Background="#242424"
-                     Foreground="Black"
-                     FontFamily="Roboto"
-                     ItemsSource="{Binding Books}">
+            <ItemsControl ItemsSource="{Binding Books}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Style="{StaticResource Book}">
+                            <StackPanel>
+                                <Image Source="pack://application:,,,/img/1984.png"/>
 
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
-                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
-                        <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}" />
-                        <GridViewColumn Header="Author" DisplayMemberBinding="{Binding Author}" />
-                        <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}" />
-                    </GridView>
-                </ListView.View>
-            </ListView>
+                                <TextBlock Text="{Binding Title}" 
+                                           Margin="2"
+                                           FontSize="16"
+                                           FontFamily="/fnt/#Oswald"
+                                           FontWeight="Medium"
+                                           Foreground="Black"/>
 
+                                <TextBlock Text="{Binding Author}" 
+                                           Margin="2, 2, 2, 5"
+                                           FontSize="14"
+                                           FontFamily="/fnt/#Oswald"
+                                           Foreground="Black"/>
+
+
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </Grid>
-        
     </Grid>
 </UserControl>
