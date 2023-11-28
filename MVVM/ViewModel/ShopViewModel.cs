@@ -17,40 +17,27 @@ namespace Book_Store.MVVM.ViewModel
 		StoreContext db = new();
 		public ObservableCollection<ShopBook> Books { get; set; }
 
-		RelayCommand? addCommand;
-		RelayCommand? deleteCommand;
+		public event EventHandler<ElementClickedEventArgs>? BookClicked;
+
+		public RelayCommand BookCommand { get; set; }
 
 		public ShopViewModel()
 		{
 			db.Database.EnsureCreated();
 			db.ShopBooks.Load();
 			Books = db.ShopBooks.Local.ToObservableCollection();
+
+			BookCommand = new RelayCommand(BookCommand_Executed);
 		}
 
-		public RelayCommand AddCommand
+		private void BookCommand_Executed(object o)
 		{
-			get
+			ShopBook book;
+			if (o is int bookId)
 			{
-				return addCommand ??= new RelayCommand((o) =>
-				{
-					ShopBook book = new ShopBook();
-					db.ShopBooks.Add(book);
-					db.SaveChanges();
-				});
-			}
-		}
-
-		public RelayCommand DeleteCommand
-		{
-			get
-			{
-				return deleteCommand ??= new RelayCommand((o) =>
-				{
-                    ShopBook book = new ShopBook();
-                    db.ShopBooks.Add(book);
-					db.SaveChanges();
-				});
-			}
+				book = Books.First(x => x.Id == bookId);
+				BookClicked?.Invoke(this, new ElementClickedEventArgs(book));
+			}	
 		}
 	}
 }

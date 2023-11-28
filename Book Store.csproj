@@ -14,7 +14,13 @@
     <None Remove="fnt\SofiaSansSemiCondensed-VariableFont.ttf" />
     <None Remove="fnt\SofiaSansSemiCondensed-VariableFont_wght.ttf" />
     <None Remove="img\1984.png" />
-    <None Remove="img\book.png" />
+    <None Remove="img\book-fill-negate.png" />
+    <None Remove="img\book-fill.png" />
+    <None Remove="img\covers\1984.png" />
+    <None Remove="img\covers\c-p.png" />
+    <None Remove="img\covers\i-w-n-n.png" />
+    <None Remove="img\covers\k-l.png" />
+    <None Remove="img\covers\w-p.png" />
     <None Remove="img\search.png" />
     <None Remove="img\shopping-cart.png" />
     <None Remove="img\w-p.jpg" />
@@ -35,17 +41,31 @@
     <Resource Include="fnt\SofiaSansSemiCondensed-VariableFont.ttf">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\1984.png">
+    <Resource Include="img\book-fill-negate.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\book-fill.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\book.png" />
+    <Resource Include="img\covers\1984.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\covers\c-p.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\covers\i-w-n-n.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\covers\k-l.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\covers\w-p.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="img\search.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="img\shopping-cart.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="img\w-p.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

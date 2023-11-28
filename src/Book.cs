@@ -17,6 +17,7 @@ namespace Book_Store.src
 		protected string? publication_date;
 		protected string? description;
         protected string? author;
+        protected string? cover;
 
         public string? Title
         {
@@ -67,5 +68,15 @@ namespace Book_Store.src
                 OnPropertyChanged("Author");
             }
         }
-    }
+
+		public string? Cover
+		{
+			get => cover;
+			set
+			{
+				cover = value;
+				OnPropertyChanged("Author");
+			}
+		}
+	}
 }

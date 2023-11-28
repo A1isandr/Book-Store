@@ -29,20 +29,5 @@ namespace Book_Store
 		{
 			DragMove();
 		}
-
-		private void CloseWindowButton_Click(object sender, RoutedEventArgs e)
-		{
-			Close();
-		}
-
-		private void MaxWindowButton_Click(object sender, RoutedEventArgs e)
-		{
-			WindowState = (WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized);
-		}
-
-		private void MinWindowButton_Click(object sender, RoutedEventArgs e)
-		{
-			WindowState = WindowState.Minimized;
-		}
 	}
 }

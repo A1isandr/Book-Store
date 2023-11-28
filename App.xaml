@@ -18,6 +18,7 @@
                 <ResourceDictionary Source="dict\color-scheme\ColorScheme.xaml" />
                 <ResourceDictionary Source="dict\GridView.xaml" />
                 <ResourceDictionary Source="dict\Book.xaml" />
+                <ResourceDictionary Source="dict\BookInfo.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type vm:ShopViewModel}">

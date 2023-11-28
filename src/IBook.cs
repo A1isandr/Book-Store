@@ -20,11 +20,11 @@ namespace Book_Store.src
         /// </summary>
         public string? Title { get; set; }
         /// <summary>
-        /// Book's genre
+        /// Book's genre.
         /// </summary>
 		public string? Genre { get; set; }
         /// <summary>
-        /// Book's first publication date
+        /// Book's first publication date.
         /// </summary>
         public string? PublicationDate { get; set; }
 		/// <summary>
@@ -35,5 +35,9 @@ namespace Book_Store.src
         /// Book's author.
         /// </summary>
         public string? Author { get; set; }
-    }
+        /// <summary>
+        /// Book's cover.
+        /// </summary>
+		public string? Cover { get; set; }
+	}
 }
