@@ -116,14 +116,8 @@
                 CornerRadius="10"
                 Background="{StaticResource StoreMenuBrush}">
 
-                <StackPanel>
-                    <Button Name="BrowseBackButton"
-                         Width="40"
-                         Height="40"
-                         HorizontalAlignment="Left"
-                         Margin="10, 10, 10, 10"
-                         Content="("/>
-                    
+                <StackPanel
+                    Margin="0, 50, 0, 0">
                     <RadioButton Name="MenuShopButton"
                         Content="Магазин"
                         Height="50"

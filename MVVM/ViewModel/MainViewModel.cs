@@ -37,10 +37,11 @@ namespace Book_Store.MVVM.ViewModel
 
         public MainViewModel()
         {
-            // initializing View Models
+            // Initializing View Models
             ShopVM = new ShopViewModel();
 			LibraryVM = new LibraryViewModel();
 
+            // Subscribing to BookClicked event
             ShopVM.BookClicked += ShopVM_BookClicked;
 
 			// Initializing Current View
@@ -97,9 +98,10 @@ namespace Book_Store.MVVM.ViewModel
         /// <param name="e"></param>
 		private void ShopVM_BookClicked(object? sender, ElementClickedEventArgs e)
 		{
-            // TO DO: как нибудь сделать так, чтобы в BookView окрывалась та книга, которая была выбрана
-            // ElementClickedEventArgs предоставляет выбранную книгу?.
-            MessageBox.Show(e.ToString());
+            if (e.EventInfo is Book book)
+            {
+                CurrentView = new BookViewModel(book);
+            }
 		}
 	}
 }

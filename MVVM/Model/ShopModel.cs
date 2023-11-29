@@ -13,19 +13,19 @@ namespace Book_Store.MVVM.Model
     /// <summary>
     /// Describes behavior of shop book
     /// </summary>
-    class ShopBook : Book
+    class ShopBook : Book, IShopBook
 	{
-		private decimal price;
+		private decimal _price;
 
 		/// <summary>
 		/// Book's price.
 		/// </summary>
 		public decimal Price
 		{
-			get => price;
+			get => _price;
 			set
 			{
-				price = value;
+				_price = value;
 				OnPropertyChanged("Price");
 			}
 		}

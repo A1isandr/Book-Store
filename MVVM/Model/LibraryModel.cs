@@ -12,20 +12,20 @@ namespace Book_Store.MVVM.Model
 	/// <summary>
 	/// Describes behavior of library book
 	/// </summary>
-	class LibraryBook : Book
+	class LibraryBook : Book, ILibraryBook
 	{
-		private string date_added;
+		private string _date_added;
 
 		/// <summary>
 		/// Book's purchase date 
 		/// </summary>
 		public string DateAdded
 		{
-			get => date_added;
+			get => _date_added;
 			set
 			{
-				date_added = value;
-				OnPropertyChanged("Price");
+				_date_added = value;
+				OnPropertyChanged("DateAdded");
 			}
 		}
 	}

@@ -12,70 +12,70 @@ namespace Book_Store.src
     class Book : ObservableObject, IBook
     {
         public int Id {  get; set; }
-        protected string? title;
-		protected string? genre;
-		protected string? publication_date;
-		protected string? description;
-        protected string? author;
-        protected string? cover;
+        protected string? _title;
+		protected string? _genre;
+		protected string? _publication_date;
+		protected string? _description;
+        protected string? _author;
+        protected string? _cover;
 
         public string? Title
         {
-            get => title;
+            get => _title;
             set
             {
-                title = value;
+                _title = value;
                 OnPropertyChanged("Title");
             }
         }
 
 		public string? Genre
 		{
-			get => genre;
+			get => _genre;
 			set
 			{
-				genre = value;
+				_genre = value;
 				OnPropertyChanged("Genre");
 			}
 		}
 
 		public string? PublicationDate
 		{
-			get => publication_date;
+			get => _publication_date;
 			set
 			{
-				publication_date = value;
-				OnPropertyChanged("Title");
+				_publication_date = value;
+				OnPropertyChanged("PublicationDate");
 			}
 		}
 
 		public string? Description
         {
-            get => description;
+            get => _description;
             set
             {
-                description = value;
+                _description = value;
                 OnPropertyChanged("Description");
             }
         }
 
         public string? Author
         {
-            get => author;
+            get => _author;
             set
             {
-                author = value;
+                _author = value;
                 OnPropertyChanged("Author");
             }
         }
 
 		public string? Cover
 		{
-			get => cover;
+			get => _cover;
 			set
 			{
-				cover = value;
-				OnPropertyChanged("Author");
+				_cover = value;
+				OnPropertyChanged("Cover");
 			}
 		}
 	}

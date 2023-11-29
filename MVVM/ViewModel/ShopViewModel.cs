@@ -15,10 +15,17 @@ namespace Book_Store.MVVM.ViewModel
     class ShopViewModel
     {
 		StoreContext db = new();
+		/// <summary>
+		/// 
+		/// </summary>
 		public ObservableCollection<ShopBook> Books { get; set; }
-
+		/// <summary>
+		/// 
+		/// </summary>
 		public event EventHandler<ElementClickedEventArgs>? BookClicked;
-
+		/// <summary>
+		/// 
+		/// </summary>
 		public RelayCommand BookCommand { get; set; }
 
 		public ShopViewModel()
