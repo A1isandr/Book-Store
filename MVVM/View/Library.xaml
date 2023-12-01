@@ -49,6 +49,7 @@
                     Text="Моя Библиотека"
                     FontFamily="/fnt/#Lobster"
                     FontSize="25"
+                    TextAlignment="Center"
                     Foreground="{StaticResource SecondaryForegroundBrush}"
                     VerticalAlignment="Center"/>
             </Grid>
@@ -56,10 +57,12 @@
 
         <ScrollViewer
                 Grid.Row="1"
-                HorizontalScrollBarVisibility="Auto"
+                HorizontalScrollBarVisibility="Hidden"
                 VerticalScrollBarVisibility="Auto">
 
-            <Grid Name="Main" MaxWidth="{Binding ElementName=LibraryView, Path=ActualWidth}">
+            <Grid Name="Main" 
+                  MaxWidth="{Binding ElementName=LibraryView, Path=ActualWidth}">
+                
                 <ItemsControl ItemsSource="{Binding Books}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -77,12 +80,16 @@
                                            FontSize="16"
                                            FontFamily="/fnt/#Oswald"
                                            FontWeight="Medium"
+                                           TextWrapping="Wrap"
+                                           TextAlignment="Center"
                                            Foreground="{StaticResource MainForegroundBrush}"/>
 
                                     <TextBlock Text="{Binding Author}" 
                                            Margin="2, 2, 2, 5"
                                            FontSize="14"
                                            FontFamily="/fnt/#Oswald"
+                                           TextWrapping="Wrap"
+                                           TextAlignment="Center"
                                            Foreground="{StaticResource MainForegroundBrush}"/>
                                 </StackPanel>
                             </Border>

@@ -8,21 +8,21 @@
     <SolidColorBrush x:Key="HoverBorderBrush"
                  Color="#DDD" />
     <SolidColorBrush x:Key="SelectedBackgroundBrush"
-                 Color="Gray" />
+                 Color="White" />
     <SolidColorBrush x:Key="SelectedForegroundBrush"
                  Color="White" />
     <SolidColorBrush x:Key="DisabledForegroundBrush"
-                 Color="#888" />
+                 Color="White" />
     <SolidColorBrush x:Key="GlyphBrush"
                  Color="#444" />
     <SolidColorBrush x:Key="NormalBrush"
-                 Color="#888" />
+                 Color="White" />
     <SolidColorBrush x:Key="NormalBorderBrush"
-                 Color="#888" />
+                 Color="White" />
     <SolidColorBrush x:Key="HorizontalNormalBrush"
-                 Color="#C8C8C8" />
+                 Color="White" />
     <SolidColorBrush x:Key="HorizontalNormalBorderBrush"
-                 Color="#888" />
+                 Color="White" />
 
     <Style x:Key="ScrollBarLineButton"
        TargetType="{x:Type RepeatButton}">

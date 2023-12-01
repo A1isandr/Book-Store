@@ -15,5 +15,7 @@
                      Color="BLack"/>
     <SolidColorBrush x:Key="HeaderBackgroundBrush"
                      Color="BLack"/>
-    
+    <SolidColorBrush x:Key="BorderBackgroundBrush"
+                     Color="White"/>
+
 </ResourceDictionary>

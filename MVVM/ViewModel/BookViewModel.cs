@@ -5,16 +5,56 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Book_Store.MVVM.ViewModel
 {
-    internal class BookViewModel
+    internal class BookViewModel : ObservableObject
     {
-        public BookModel Model { get; set; }
+		/// <summary>
+		/// Fires when certain book is purchased by a user.
+		/// </summary>
+		public event EventHandler<ElementClickedEventArgs>? BookPurchased;
 
-        public BookViewModel(Book book)
-        {
-            Model = new BookModel(book);
+		private RelayCommand? _purchaseCommand;
+
+		private Book? _book;
+		/// <summary>
+		/// Book currently being viewed
+		/// </summary>
+		public Book? Book
+        { 
+            get
+            {
+                if (_book is ShopBook shopBook)
+                {
+                    return shopBook;
+                }
+                else if (_book is LibraryBook libraryBook)
+                {
+                    return libraryBook;
+                }
+                else
+                {
+                    return _book;
+                }
+            }
+            set => _book = value; 
         }
-    }
+
+		public RelayCommand PurchaseCommand
+		{
+			get
+			{
+				return _purchaseCommand ??= new RelayCommand((o) =>
+				{
+                    if (Book is not null)
+                    {
+						BookPurchased?.Invoke(this, new ElementClickedEventArgs(Book));
+					}
+				});
+			}
+		}
+	}
 }

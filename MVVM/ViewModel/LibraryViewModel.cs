@@ -10,13 +10,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Book_Store.MVVM.ViewModel
 {
-    class LibraryViewModel
+    class LibraryViewModel : ObservableObject
     {
-		StoreContext db = new();
-		public ObservableCollection<LibraryBook> Books { get; set; }
+		private StoreContext db = new();
 
-		RelayCommand? addCommand;
-		RelayCommand? deleteCommand;
+		/// <summary>
+		/// Collection of books presented in the library.
+		/// </summary>
+		public ObservableCollection<LibraryBook> Books { get; set; }
 
 		public LibraryViewModel()
 		{
@@ -25,29 +26,31 @@ namespace Book_Store.MVVM.ViewModel
 			Books = db.LibraryBooks.Local.ToObservableCollection();
 		}
 
-		public RelayCommand AddCommand
+		/// <summary>
+		/// Adds purchased book to the library.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public void BookVM_BookPurchased(object? sender, ElementClickedEventArgs e)
 		{
-			get
+			if (e.EventInfo is Book book && e.EventInfo is not null)
 			{
-				return addCommand ??= new RelayCommand((o) =>
+				LibraryBook libraryBook = new()
 				{
-					LibraryBook book = new LibraryBook();
-					db.LibraryBooks.Add(book);
-					db.SaveChanges();
-				});
-			}
-		}
+					Title = book.Title,
+					Genre = book.Genre,
+					PublicationDate = book.PublicationDate,
+					Description = book.Description,
+					Author = book.Author,
+					Cover = book.Cover,
+					DateAdded = DateTime.UtcNow.ToString()
+				};
 
-		public RelayCommand DeleteCommand
-		{
-			get 
-			{
-				return deleteCommand ??= new RelayCommand((o) =>
-				{
-					LibraryBook book = new LibraryBook();
-					db.LibraryBooks.Add(book);
-					db.SaveChanges();
-				});
+				db.LibraryBooks.Add(libraryBook);
+				db.SaveChanges();
+
+				db.LibraryBooks.Load();
+				Books = db.LibraryBooks.Local.ToObservableCollection();
 			}
 		}
 	}

@@ -9,9 +9,9 @@ namespace Book_Store.src
     /// <summary>
     /// Describes basic behavior of a book
     /// </summary>
-    class Book : ObservableObject, IBook
+    class CommonBook : Book
     {
-        public int Id {  get; set; }
+        public override int Id {  get; set; }
         protected string? _title;
 		protected string? _genre;
 		protected string? _publication_date;
@@ -19,63 +19,57 @@ namespace Book_Store.src
         protected string? _author;
         protected string? _cover;
 
-        public string? Title
+        public override string? Title
         {
             get => _title;
             set
             {
                 _title = value;
-                OnPropertyChanged("Title");
             }
         }
 
-		public string? Genre
+		public override string? Genre
 		{
 			get => _genre;
 			set
 			{
 				_genre = value;
-				OnPropertyChanged("Genre");
 			}
 		}
 
-		public string? PublicationDate
+		public override string? PublicationDate
 		{
 			get => _publication_date;
 			set
 			{
 				_publication_date = value;
-				OnPropertyChanged("PublicationDate");
 			}
 		}
 
-		public string? Description
+		public override string? Description
         {
             get => _description;
             set
             {
                 _description = value;
-                OnPropertyChanged("Description");
             }
         }
 
-        public string? Author
+        public override string? Author
         {
             get => _author;
             set
             {
                 _author = value;
-                OnPropertyChanged("Author");
             }
         }
 
-		public string? Cover
+		public override string? Cover
 		{
 			get => _cover;
 			set
 			{
 				_cover = value;
-				OnPropertyChanged("Cover");
 			}
 		}
 	}

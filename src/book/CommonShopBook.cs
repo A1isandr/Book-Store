@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Book_Store.src
 {
-    internal interface IShopBook : IBook
+    abstract class CommonShopBook : CommonBook
     {
-        public decimal Price { get; set; }
+		/// <summary>
+		/// Book's price.
+		/// </summary>
+		public abstract decimal Price { get; set; }
     }
 }

@@ -4,28 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Book_Store.MVVM.Model;
 using Book_Store.src;
 
 namespace Book_Store.MVVM.ViewModel
 {
     class MainViewModel : ObservableObject
     {
-		public RelayCommand CloseWindowCommand { get; set; }
-		public RelayCommand MaxWindowCommand { get; set; }
-		public RelayCommand MinWindowCommand { get; set; }
+		private RelayCommand? _closeWindowCommand;
+		private RelayCommand? _maxWindowCommand;
+		private RelayCommand? _minWindowCommand;
 
-		public RelayCommand ShopCommand { get; set; }
-		public RelayCommand LibraryCommand { get; set; }
+        private RelayCommand? _shopCommand;
+        private RelayCommand? _libraryCommand;
 
 		private ShopViewModel ShopVM { get; set; }
 		private LibraryViewModel LibraryVM { get; set; }
+		private BookViewModel BookVM { get; set; }
 
-		private object _currentView;
-
+		private object? _currentView;
         /// <summary>
-        /// Represents currently opened tab
+        /// Represents currently opened tab.
         /// </summary>
-        public object CurrentView
+        public object? CurrentView
         {
             get { return _currentView; }
             set 
@@ -37,70 +38,110 @@ namespace Book_Store.MVVM.ViewModel
 
         public MainViewModel()
         {
-            // Initializing View Models
             ShopVM = new ShopViewModel();
 			LibraryVM = new LibraryViewModel();
+            BookVM = new BookViewModel();
 
-            // Subscribing to BookClicked event
             ShopVM.BookClicked += ShopVM_BookClicked;
+			BookVM.BookPurchased += LibraryVM.BookVM_BookPurchased;
 
-			// Initializing Current View
 			CurrentView = ShopVM;
-
-            // Logic for ShopCommand
-            ShopCommand = new RelayCommand(o =>
-            {
-                CurrentView = ShopVM;
-            });
-
-            // Logic for LibraryCommand
-            LibraryCommand = new RelayCommand(o =>
-            {
-                CurrentView = LibraryVM;
-            });
-
-			// Logic for CloseWindowCommand
-			CloseWindowCommand = new RelayCommand(o =>
-            {
-                if (o is MainWindow window)
-                {
-                    window.Close();
-                }
-            });
-
-			// Logic for MaxWindowCommand
-			MaxWindowCommand = new RelayCommand(o =>
-            {
-                if (o is MainWindow window)
-                {
-                    window.WindowState = 
-                    (
-                        window.WindowState == WindowState.Maximized ? WindowState.Normal : 
-                                                                      WindowState.Maximized
-                    );
-                }
-            });
-
-			// Logic for MinWindowCommand
-			MinWindowCommand = new RelayCommand(o =>
-            {
-                if (o is MainWindow window)
-                {
-					window.WindowState = WindowState.Minimized;
-				}
-            });
         }
 
-        /// <summary>
-        /// Event handler for BookClicked event
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+		/// <summary>
+		/// 
+		/// </summary>
+		public RelayCommand ShopCommand
+		{
+			get
+			{
+				return _shopCommand ??= new RelayCommand((o) =>
+				{
+					CurrentView = ShopVM;
+				});
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public RelayCommand LibraryCommand
+		{
+			get
+			{
+				return _libraryCommand ??= new RelayCommand((o) =>
+				{
+					CurrentView = LibraryVM;
+				});
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public RelayCommand CloseWindowCommand
+		{
+			get
+			{
+				return _closeWindowCommand ??= new RelayCommand((o) =>
+				{
+					if (o is MainWindow window)
+					{
+						window.Close();
+					}
+				});
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public RelayCommand MaxWindowCommand
+		{
+			get
+			{
+				return _maxWindowCommand ??= new RelayCommand((o) =>
+				{
+					if (o is MainWindow window)
+					{
+						window.WindowState =
+						(
+							window.WindowState == WindowState.Maximized ? WindowState.Normal :
+																		  WindowState.Maximized
+						);
+					}
+				});
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public RelayCommand MinWindowCommand
+		{
+			get
+			{
+				return _minWindowCommand ??= new RelayCommand((o) =>
+				{
+					if (o is MainWindow window)
+					{
+						window.WindowState = WindowState.Minimized;
+					}
+				});
+			}
+		}
+
+		/// <summary>
+		/// Event handler for BookClicked event.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void ShopVM_BookClicked(object? sender, ElementClickedEventArgs e)
 		{
             if (e.EventInfo is Book book)
             {
-                CurrentView = new BookViewModel(book);
+                BookVM.Book = book;
+                CurrentView = BookVM;
             }
 		}
 	}

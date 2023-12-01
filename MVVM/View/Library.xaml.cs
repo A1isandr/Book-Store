@@ -24,7 +24,6 @@ namespace Book_Store.MVVM.View
         public Library()
         {
             InitializeComponent();
-            DataContext = new LibraryViewModel();
         }
     }
 }

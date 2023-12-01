@@ -11,6 +11,9 @@ namespace Book_Store.src
 	/// </summary>
 	class ElementClickedEventArgs : EventArgs
 	{
+		/// <summary>
+		/// Info of an event
+		/// </summary>
 		public object EventInfo { get; }
 
 		public ElementClickedEventArgs(object info)

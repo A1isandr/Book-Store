@@ -10,15 +10,14 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="dict\HeaderButtons.xaml" />
-                <ResourceDictionary Source="dict\TextBlocks.xaml" />
                 <ResourceDictionary Source="dict\ScrollBars.xaml" />
                 <ResourceDictionary Source="dict\SearchBoxes.xaml" />
                 <ResourceDictionary Source="dict\MenuButton.xaml" />
                 <ResourceDictionary Source="dict\SearchButtons.xaml" />
                 <ResourceDictionary Source="dict\color-scheme\ColorScheme.xaml" />
-                <ResourceDictionary Source="dict\GridView.xaml" />
                 <ResourceDictionary Source="dict\Book.xaml" />
                 <ResourceDictionary Source="dict\BookInfo.xaml" />
+                <ResourceDictionary Source="dict\PurchaseButtons.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type vm:ShopViewModel}">

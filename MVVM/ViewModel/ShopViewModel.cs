@@ -12,39 +12,45 @@ using System.Data.SqlTypes;
 
 namespace Book_Store.MVVM.ViewModel
 {
-    class ShopViewModel
+    class ShopViewModel : ObservableObject
     {
-		StoreContext db = new();
+		private StoreContext db = new();
+
 		/// <summary>
-		/// 
+		/// Collection of books presented in the shop.
 		/// </summary>
 		public ObservableCollection<ShopBook> Books { get; set; }
 		/// <summary>
-		/// 
+		/// Fires when certain book is clicked by a user.
 		/// </summary>
 		public event EventHandler<ElementClickedEventArgs>? BookClicked;
-		/// <summary>
-		/// 
-		/// </summary>
-		public RelayCommand BookCommand { get; set; }
+
+		private RelayCommand? _bookCommand;
 
 		public ShopViewModel()
 		{
 			db.Database.EnsureCreated();
 			db.ShopBooks.Load();
 			Books = db.ShopBooks.Local.ToObservableCollection();
-
-			BookCommand = new RelayCommand(BookCommand_Executed);
 		}
 
-		private void BookCommand_Executed(object o)
+		/// <summary>
+		/// BookCommand logic.
+		/// </summary>
+		public RelayCommand BookCommand
 		{
-			ShopBook book;
-			if (o is int bookId)
+			get
 			{
-				book = Books.First(x => x.Id == bookId);
-				BookClicked?.Invoke(this, new ElementClickedEventArgs(book));
-			}	
+				return _bookCommand ??= new RelayCommand((o) =>
+				{
+					ShopBook book;
+					if (o is int bookId)
+					{
+						book = Books.First(x => x.Id == bookId);
+						BookClicked?.Invoke(this, new ElementClickedEventArgs(book));
+					}
+				});
+			}
 		}
 	}
 }

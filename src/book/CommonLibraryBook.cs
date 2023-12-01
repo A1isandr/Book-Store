@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Book_Store.src
 {
-    internal interface ILibraryBook
+    abstract class CommonLibraryBook : CommonBook
     {
-        public string DateAdded { get; set; }
+		/// <summary>
+		/// Book's purchase date 
+		/// </summary>
+		public abstract string DateAdded { get; set; }
     }
 }
