@@ -10,14 +10,14 @@ using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Book_Store.MVVM.ViewModel
 {
-    internal class BookViewModel : ObservableObject
+    internal class BookInfoViewModel : ObservableObject
     {
+		private RelayCommand? _purchaseCommand;
+
 		/// <summary>
 		/// Fires when certain book is purchased by a user.
 		/// </summary>
 		public event EventHandler<ElementClickedEventArgs>? BookPurchased;
-
-		private RelayCommand? _purchaseCommand;
 
 		private Book? _book;
 		/// <summary>
@@ -43,6 +43,9 @@ namespace Book_Store.MVVM.ViewModel
             set => _book = value; 
         }
 
+		/// <summary>
+		/// Adds chosen book to user's library.
+		/// </summary>
 		public RelayCommand PurchaseCommand
 		{
 			get

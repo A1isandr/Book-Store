@@ -9,8 +9,19 @@ using System.Windows;
 
 namespace Book_Store.src
 {
+	/// <summary>
+	/// Changes size of ContentControl in MainWindow according to Window dimensions. 
+	/// </summary>
 	public class RectConverter : IMultiValueConverter
 	{
+		/// <summary>
+		/// Converts Window dimensions to size of ContentControl. 
+		/// </summary>
+		/// <param name="values"></param>
+		/// <param name="targetType"></param>
+		/// <param name="parameter"></param>
+		/// <param name="culture"></param>
+		/// <returns></returns>
 		public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
 		{
 			if (values.Length == 2 && values[0] is double width && values[1] is double height)

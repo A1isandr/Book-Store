@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Book_Store"
              xmlns:vm="clr-namespace:Book_Store.MVVM.ViewModel"
+             xmlns:vms="clr-namespace:Book_Store.MVVM.ViewModel.shop"
+             xmlns:vml="clr-namespace:Book_Store.MVVM.ViewModel.library"
              xmlns:v="clr-namespace:Book_Store.MVVM.View"
              StartupUri="MainWindow.xaml">
     
@@ -18,16 +20,23 @@
                 <ResourceDictionary Source="dict\Book.xaml" />
                 <ResourceDictionary Source="dict\BookInfo.xaml" />
                 <ResourceDictionary Source="dict\PurchaseButtons.xaml" />
+                <ResourceDictionary Source="dict\ReturnButtons.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <DataTemplate DataType="{x:Type vm:ShopViewModel}">
+            <DataTemplate DataType="{x:Type vms:ShopViewModel}">
                 <v:Shop/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type vm:LibraryViewModel}">
+            <DataTemplate DataType="{x:Type vml:LibraryViewModel}">
                 <v:Library/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type vm:BookViewModel}">
-                <v:BookView/>
+            <DataTemplate DataType="{x:Type vm:BookInfoViewModel}">
+                <v:BookInfo/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:ShopBookCatalogViewModel}">
+                <v:BookCatalog/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vml:LibraryBookCatalogViewModel}">
+                <v:BookCatalog/>
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>

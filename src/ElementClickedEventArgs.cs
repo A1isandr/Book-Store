@@ -12,7 +12,7 @@ namespace Book_Store.src
 	class ElementClickedEventArgs : EventArgs
 	{
 		/// <summary>
-		/// Info of an event
+		/// Info of an event.
 		/// </summary>
 		public object EventInfo { get; }
 

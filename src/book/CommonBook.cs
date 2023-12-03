@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Book_Store.src
 {
     /// <summary>
-    /// Describes basic behavior of a book
+    /// Describes basic behavior of a book.
     /// </summary>
     class CommonBook : Book
     {

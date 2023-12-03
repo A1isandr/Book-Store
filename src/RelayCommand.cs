@@ -7,15 +7,14 @@ using System.Windows.Input;
 
 namespace Book_Store.src
 {
-	/// <summary>
-	/// Describes relay command
-	/// </summary>
+	/// <inheritdoc cref="ICommand"/>
 	class RelayCommand : ICommand
 	{
 		private Action<object> _execute;
 		private Func<object, bool> _canExecute;
 
-		public event EventHandler CanExecuteChanged
+		/// <inheritdoc cref="ICommand.CanExecuteChanged"/>
+		public event EventHandler? CanExecuteChanged
 		{
 			add { CommandManager.RequerySuggested += value; }
 			remove { CommandManager.RequerySuggested -= value; }
@@ -27,12 +26,13 @@ namespace Book_Store.src
 			_canExecute = canExecute;
 		}
 
-		public bool CanExecute(object parameter)
+		/// <inheritdoc cref="ICommand.CanExecute(object?)"/>
+		public bool CanExecute(object? parameter)
 		{
 			return _canExecute == null || _canExecute(parameter);
 		}
-
-		public void Execute(object parameter)
+		/// <inheritdoc cref="ICommand.Execute(object?)"/>
+		public void Execute(object? parameter)
 		{
 			_execute(parameter);
 		}

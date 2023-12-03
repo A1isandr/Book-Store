@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Book_Store.MVVM.Model;
+using Book_Store.MVVM.ViewModel.library;
+using Book_Store.MVVM.ViewModel.shop;
 using Book_Store.src;
 
 namespace Book_Store.MVVM.ViewModel
@@ -20,7 +22,6 @@ namespace Book_Store.MVVM.ViewModel
 
 		private ShopViewModel ShopVM { get; set; }
 		private LibraryViewModel LibraryVM { get; set; }
-		private BookViewModel BookVM { get; set; }
 
 		private object? _currentView;
         /// <summary>
@@ -28,11 +29,11 @@ namespace Book_Store.MVVM.ViewModel
         /// </summary>
         public object? CurrentView
         {
-            get { return _currentView; }
+            get => _currentView;
             set 
             { 
                 _currentView = value;
-                OnPropertyChanged();
+                OnPropertyChanged("CurrentView");
             }
         }
 
@@ -40,16 +41,14 @@ namespace Book_Store.MVVM.ViewModel
         {
             ShopVM = new ShopViewModel();
 			LibraryVM = new LibraryViewModel();
-            BookVM = new BookViewModel();
 
-            ShopVM.BookClicked += ShopVM_BookClicked;
-			BookVM.BookPurchased += LibraryVM.BookVM_BookPurchased;
+			ShopVM.BookPurchased += LibraryVM.AddNewBook;
 
 			CurrentView = ShopVM;
         }
 
 		/// <summary>
-		/// 
+		/// Changes the current view to shop.
 		/// </summary>
 		public RelayCommand ShopCommand
 		{
@@ -63,7 +62,7 @@ namespace Book_Store.MVVM.ViewModel
 		}
 
 		/// <summary>
-		/// 
+		/// Changes the current view to library.
 		/// </summary>
 		public RelayCommand LibraryCommand
 		{
@@ -77,7 +76,7 @@ namespace Book_Store.MVVM.ViewModel
 		}
 
 		/// <summary>
-		/// 
+		/// Closes the window.
 		/// </summary>
 		public RelayCommand CloseWindowCommand
 		{
@@ -94,7 +93,7 @@ namespace Book_Store.MVVM.ViewModel
 		}
 
 		/// <summary>
-		/// 
+		/// Maximizes the window.
 		/// </summary>
 		public RelayCommand MaxWindowCommand
 		{
@@ -115,7 +114,7 @@ namespace Book_Store.MVVM.ViewModel
 		}
 
 		/// <summary>
-		/// 
+		/// Minimizes the window.
 		/// </summary>
 		public RelayCommand MinWindowCommand
 		{
@@ -129,20 +128,6 @@ namespace Book_Store.MVVM.ViewModel
 					}
 				});
 			}
-		}
-
-		/// <summary>
-		/// Event handler for BookClicked event.
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void ShopVM_BookClicked(object? sender, ElementClickedEventArgs e)
-		{
-            if (e.EventInfo is Book book)
-            {
-                BookVM.Book = book;
-                CurrentView = BookVM;
-            }
 		}
 	}
 }

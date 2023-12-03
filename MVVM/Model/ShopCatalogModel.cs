@@ -11,7 +11,7 @@ using Book_Store.src;
 namespace Book_Store.MVVM.Model
 {
     /// <summary>
-    /// Describes behavior of shop book
+    /// Describes behavior of shop book.
     /// </summary>
     class ShopBook : CommonShopBook
 	{

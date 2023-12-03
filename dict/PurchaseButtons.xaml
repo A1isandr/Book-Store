@@ -15,7 +15,7 @@
                                 FontSize="20"
                                 FontFamily="/fnt/#Lobster"
                                 FontWeight="Medium"
-                                Foreground="Black"
+                                Foreground="{DynamicResource MainForegroundBrush}"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
                                 Background="Transparent"/>

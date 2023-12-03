@@ -8,7 +8,6 @@
              x:Name="ShopView"
              Background="{StaticResource ViewBackgroundBrush}"
              d:DesignHeight="450" d:DesignWidth="800">
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -34,78 +33,53 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
+                <Button Name="ReturnToCatalog"
+                        Grid.Column="0"
+                        Width="30"
+                        Height="30"
+                        Margin="0, 0, 20, 0"
+                        Background="White"
+                        Visibility="{Binding ReturnButtonVisibility}"
+                        Command="{Binding ReturnToCatalogCommand}"
+                        Style="{StaticResource ReturnButton}">
+
+                    <Button.Effect>
+                        <DropShadowEffect
+                            Color="Black" 
+                            BlurRadius="10" 
+                            Opacity="0.5" 
+                            ShadowDepth="0"
+                            Direction="0"/>
+                    </Button.Effect>
+                </Button>
+
                 <TextBox Name="SearchBar"
-                    Grid.Column="0"
+                    Grid.Column="1"
                     Width="250"
                     Height="30"
                     HorizontalAlignment="Left"
                     Style="{StaticResource SearchBox}"/>
 
                 <TextBlock Name="Title"
-                    Grid.Column="1"
-                    Text="Магазин"
+                    Grid.Column="2"
+                    Text="{Binding Title}"
                     FontFamily="/fnt/#Lobster"
                     FontSize="25"
                     TextAlignment="Center"
+                    TextTrimming="CharacterEllipsis"
                     Foreground="{StaticResource SecondaryForegroundBrush}"
                     VerticalAlignment="Center"/>
             </Grid>
         </Border>
 
-        <ScrollViewer
-                Grid.Row="1"
-                HorizontalScrollBarVisibility="Hidden"
-                VerticalScrollBarVisibility="Auto">
-
-            <Grid Name="Main"
-                  MaxWidth="{Binding ElementName=ShopView, Path=ActualWidth}">
-                
-                <ItemsControl ItemsSource="{Binding Books}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Horizontal"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Border Style="{StaticResource Book}">
-
-                                <Border.InputBindings>
-                                    <MouseBinding MouseAction="LeftClick" 
-                                                  Command="{Binding DataContext.BookCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                                  CommandParameter="{Binding Id}"/>
-                                </Border.InputBindings>
-
-                                <StackPanel>
-                                    <Image Source="{Binding Cover}"/>
-
-                                    <TextBlock Text="{Binding Title}" 
-                                           Margin="2"
-                                           FontSize="16"
-                                           FontFamily="/fnt/#Oswald"
-                                           FontWeight="Medium"
-                                           TextWrapping="Wrap"
-                                           TextAlignment="Center"
-                                           HorizontalAlignment="Center"
-                                           Foreground="{StaticResource MainForegroundBrush}"/>
-
-                                    <TextBlock Text="{Binding Author}" 
-                                           Margin="2, 2, 2, 5"
-                                           FontSize="14"
-                                           FontFamily="/fnt/#Oswald"
-                                           TextWrapping="Wrap"
-                                           TextAlignment="Center"
-                                           HorizontalAlignment="Center"
-                                           Foreground="{StaticResource MainForegroundBrush}"/>
-                                </StackPanel>
-                            </Border>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </Grid>
-        </ScrollViewer>
+        <ContentControl
+            Grid.Row="1"
+            Content="{Binding CurrentView}">
+            
+        </ContentControl>
     </Grid>
 </UserControl>

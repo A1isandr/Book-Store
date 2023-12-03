@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 
 namespace Book_Store.src
 {
+	/// <inheritdoc cref="INotifyPropertyChanged"/>
 	class ObservableObject : INotifyPropertyChanged
 	{
+		/// <inheritdoc cref="INotifyPropertyChanged.PropertyChanged"/>
 		public event PropertyChangedEventHandler? PropertyChanged;
 
 		protected void OnPropertyChanged([CallerMemberName] string name = "")

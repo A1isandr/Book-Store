@@ -31,7 +31,7 @@
 
                             <TextBox Name="SearchBox"
                                 Text="{TemplateBinding Text}"
-                                FontFamily="/fnt/#Lobster"
+                                FontFamily="/fnt/#Oswald"
                                 FontSize="14"
                                 BorderThickness="0"
                                 Background="Transparent"

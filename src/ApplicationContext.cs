@@ -9,11 +9,17 @@ using System.Threading.Tasks;
 namespace Book_Store.src
 {
 	/// <summary>
-	/// Describes context of store
+	/// Describes context of store.
 	/// </summary>
     class StoreContext : DbContext
     {
+		/// <summary>
+		/// Set of shop books.
+		/// </summary>
 		public DbSet<ShopBook> ShopBooks { get; set; } = null!;
+		/// <summary>
+		/// Set of library books.
+		/// </summary>
 		public DbSet<LibraryBook> LibraryBooks { get; set; } = null!;
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

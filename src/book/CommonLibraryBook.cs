@@ -9,7 +9,7 @@ namespace Book_Store.src
     abstract class CommonLibraryBook : CommonBook
     {
 		/// <summary>
-		/// Book's purchase date 
+		/// Book's purchase date.
 		/// </summary>
 		public abstract string DateAdded { get; set; }
     }
