@@ -17,8 +17,10 @@ namespace Book_Store.MVVM.ViewModel.shop
 {
     class ShopViewModel : ObservableObject
     {
-        public BookInfoViewModel BookInfoVM { get; set; }
+        private BookInfoViewModel BookInfoVM { get; set; }
         private ShopBookCatalogViewModel CatalogVM { get; set; }
+
+        public ObservableCollection<Notification> Notifications { get; set; }
 
         private RelayCommand? _returnToCatalogCommand;
 
@@ -77,6 +79,8 @@ namespace Book_Store.MVVM.ViewModel.shop
             BookInfoVM = new BookInfoViewModel();
             CatalogVM = new ShopBookCatalogViewModel();
 
+            Notifications = new ObservableCollection<Notification>();
+
             CatalogVM.BookClicked += CatalogVM_BookClicked;
             BookInfoVM.BookPurchased += CatalogVM_BookPurchased;
 
@@ -119,6 +123,8 @@ namespace Book_Store.MVVM.ViewModel.shop
 		private void CatalogVM_BookPurchased(object? sender, ElementClickedEventArgs e)
         {
             BookPurchased?.Invoke(sender, e);
+
+            Notifications.Add(new Notification("Добавлено в корзину"));
         }
 	}
 }

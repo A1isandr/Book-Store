@@ -35,10 +35,12 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
                 <Button Name="ReturnToCatalog"
                         Grid.Column="0"
+                        Content="❮"
                         Width="30"
                         Height="30"
                         Margin="0, 0, 20, 0"
@@ -73,6 +75,23 @@
                     TextTrimming="CharacterEllipsis"
                     Foreground="{StaticResource SecondaryForegroundBrush}"
                     VerticalAlignment="Center"/>
+
+                <Button
+                    Grid.Column="3"
+                    Width="30"
+                    Height="30"
+                    Background="White"
+                    Style="{StaticResource CartButton}">
+
+                    <Button.Effect>
+                        <DropShadowEffect
+                            Color="Black"
+                            BlurRadius="10" 
+                            Opacity="0.5" 
+                            ShadowDepth="0"
+                            Direction="0"/>
+                    </Button.Effect>
+                </Button>
             </Grid>
         </Border>
 
@@ -81,5 +100,46 @@
             Content="{Binding CurrentView}">
             
         </ContentControl>
+
+        <ItemsControl ItemsSource="{Binding Notifications}"
+                      Grid.Row="1">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Name="PurcahseNotification"
+                        Grid.Row="1"
+                        CornerRadius="10"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Right"
+                        Width="200"
+                        Height="50"
+                        Background="#39e34a"
+                        Padding="5"
+                        Margin="10"
+                        Panel.ZIndex="2">
+
+                        <Border.Effect>
+                            <DropShadowEffect
+                                Color="Black" 
+                                BlurRadius="10" 
+                                Opacity="0.5" 
+                                ShadowDepth="0"
+                                Direction="0"/>
+                        </Border.Effect>
+
+                        <TextBlock
+                            Text="{Binding Text}"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            FontSize="18"
+                            FontFamily="/fnt/#Oswald"/>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </UserControl>
