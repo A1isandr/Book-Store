@@ -32,22 +32,8 @@
   <Class Name="Book_Store.MVVM.ViewModel.MainViewModel">
     <Position X="2.75" Y="9.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAIAAAiAAAAAAAAAAEAIAACKCAAAgAIAAAAEAAAEAA=</HashCode>
+      <HashCode>ACAIAAACAAAAAAAIAAEAIAACKCACAAAIAAIAEAAQEAA=</HashCode>
       <FileName>MVVM\ViewModel\MainViewModel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Book_Store.MVVM.ViewModel.ShopViewModel">
-    <Position X="5" Y="9.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAKAAAAAEBgIAEAAAAAAgAAAAIAAAAAAAAAAAA=</HashCode>
-      <FileName>MVVM\ViewModel\ShopViewModel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Book_Store.MVVM.ViewModel.BookInfoViewModel">
-    <Position X="14" Y="9.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ACAAgACAAABAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>MVVM\ViewModel\BookInfoViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Book_Store.src.Book">
@@ -71,27 +57,57 @@
       <FileName>src\book\CommonShopBook.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Book_Store.MVVM.ViewModel.LibraryBookCatalogViewModel">
-    <Position X="9.5" Y="9.25" Width="1.5" />
+  <Class Name="Book_Store.MVVM.ViewModel.library.LibraryBookCatalogViewModel">
+    <Position X="5" Y="15.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAggBAAAAEAAAAAAAAAAA=</HashCode>
-      <FileName>MVVM\ViewModel\LibraryBookCatalogViewModel.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.1" />
-  </Class>
-  <Class Name="Book_Store.MVVM.ViewModel.ShopBookCatalogViewModel">
-    <Position X="11.75" Y="9.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAggBAAAAEAAAAAAAAAAA=</HashCode>
-      <FileName>MVVM\ViewModel\ShopBookCatalogViewModel.cs</FileName>
+      <HashCode>AAAAAAAAAEAQgAAAAAAAAAAAhABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\ViewModel\library\LibraryBookCatalogViewModel.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Book_Store.MVVM.ViewModel.LibraryViewModel">
-    <Position X="7.25" Y="9.25" Width="1.5" />
+  <Class Name="Book_Store.MVVM.ViewModel.library.LibraryBookInfoViewModel">
+    <Position X="8.75" Y="15.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAKAAAAAEBgIAEAAAAAAgAAAAIAAAAAAAAAAAA=</HashCode>
-      <FileName>MVVM\ViewModel\LibraryViewModel.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\ViewModel\library\LibraryBookInfoViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Book_Store.MVVM.ViewModel.library.LibraryViewModel">
+    <Position X="2.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAIgAAEFCAAFBAEAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\ViewModel\library\LibraryViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Book_Store.MVVM.ViewModel.shop.ShopBookCatalogViewModel">
+    <Position X="5" Y="20.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAQgAAAAAAAAAAAgABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\ViewModel\shop\ShopBookCatalogViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Book_Store.MVVM.ViewModel.shop.ShopBookInfoViewModel">
+    <Position X="8.75" Y="20.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABQAAAAAACAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>MVVM\ViewModel\shop\ShopBookInfoViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Book_Store.MVVM.ViewModel.shop.ShopViewModel">
+    <Position X="2.75" Y="20.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAIggCEFSAAFBAAAAAAAAAAAgAAAAAAAAAAE=</HashCode>
+      <FileName>MVVM\ViewModel\shop\ShopViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Book_Store.MVVM.ViewModel.shop.CartViewModel">
+    <Position X="5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAgAABAAAAAADAAkAgAKAYAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\ViewModel\CartViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

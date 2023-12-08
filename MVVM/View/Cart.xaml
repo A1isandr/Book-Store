@@ -168,8 +168,6 @@
                                 Text="Всего в корзине:"
                                 FontFamily="/fnt/#Lobster"
                                 HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                FontSize="16"
                                 Style="{StaticResource BookInfo}"/>
 
                             <TextBlock 
@@ -200,11 +198,23 @@
                                 FontSize="16"
                                 Style="{StaticResource BookInfo}"/>
 
-                            <TextBlock 
+                            <StackPanel
                                 Grid.Column="1"
-                                Text="{Binding TotalPrice}"
-                                Margin="20, 0, 0, 0"
-                                Style="{StaticResource BookInfo}"/>
+                                Orientation="Horizontal"
+                                Margin="20, 0, 0, 0">
+
+                                <TextBlock Text="{Binding TotalPrice}"
+                                    Style="{StaticResource BookInfo}"/>
+
+                                <Label Content="₽"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="3"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    FontSize="16"
+                                    FontFamily="/fnt/#Oswald"
+                                    FontWeight="Medium"/>
+                            </StackPanel>
                         </Grid>
                     </Border>
                 </StackPanel>

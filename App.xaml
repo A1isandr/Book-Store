@@ -28,8 +28,11 @@
             <DataTemplate DataType="{x:Type vml:LibraryViewModel}">
                 <v:Library/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type vm:BookInfoViewModel}">
-                <v:BookInfo/>
+            <DataTemplate DataType="{x:Type vms:ShopBookInfoViewModel}">
+                <v:ShopBookInfo/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vml:LibraryBookInfoViewModel}">
+                <v:LibraryBookInfo/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type vms:ShopBookCatalogViewModel}">
                 <v:BookCatalog/>

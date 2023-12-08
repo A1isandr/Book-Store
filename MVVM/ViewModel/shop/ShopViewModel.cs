@@ -19,7 +19,7 @@ namespace Book_Store.MVVM.ViewModel.shop
 {
     class ShopViewModel : ObservableObject
     {
-        private BookInfoViewModel BookInfoVM { get; set; }
+        private ShopBookInfoViewModel BookInfoVM { get; set; }
         private ShopBookCatalogViewModel CatalogVM { get; set; }
 
         public ObservableCollection<Notification> Notifications { get; set; }
@@ -78,14 +78,14 @@ namespace Book_Store.MVVM.ViewModel.shop
 
 		public ShopViewModel()
         {
-            BookInfoVM = new BookInfoViewModel();
+            BookInfoVM = new ShopBookInfoViewModel();
             CatalogVM = new ShopBookCatalogViewModel();
 
             Notifications = new ObservableCollection<Notification>();
             Notifications.CollectionChanged += Notifications_CollectionChanged;
 
 			CatalogVM.BookClicked += CatalogVM_BookClicked;
-            BookInfoVM.BookAddedToCart += CatalogVM_BookPurchased;
+            BookInfoVM.BookAddedToCart += CatalogVM_BookAddedToCart;
 
             CurrentView = CatalogVM;
 
@@ -116,7 +116,7 @@ namespace Book_Store.MVVM.ViewModel.shop
         /// <param name="e"></param>
         private void CatalogVM_BookClicked(object? sender, ElementClickedEventArgs e)
         {
-            if (e.EventInfo is Book book)
+            if (e.EventInfo is ShopBook book)
             {
                 BookInfoVM.Book = book;
                 CurrentView = BookInfoVM;
@@ -126,10 +126,14 @@ namespace Book_Store.MVVM.ViewModel.shop
 			}
         }
 
-		private void CatalogVM_BookPurchased(object? sender, ElementClickedEventArgs e)
+        private void CatalogVM_BookAddedToCart(object? sender, ElementClickedEventArgs e)
         {
             BookAddedToCart?.Invoke(sender, e);
-            Notifications.Add(new Notification("Добавлено в корзину"));
+            Notifications.Add(new Notification()
+            {
+                Text = $"Добавлено в корзину {DateTime.Now.Minute}:{DateTime.Now.Second}",
+                Id = Notifications.Count,
+            });  
 		}
 
         private void Notifications_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
@@ -140,10 +144,11 @@ namespace Book_Store.MVVM.ViewModel.shop
                 var timer = new System.Windows.Threading.DispatcherTimer();
                 timer.Tick += (sender, e) =>
                 {
+                    timer.Stop();
                     // Удаление уведомления через определенное время
                     if (Notifications.Count > 0)
                     {
-                        Notifications.RemoveAt(0);
+                        Notifications.Remove(Notifications.First((x) => x.Id == 0));
                     }
                 };
                 timer.Interval = TimeSpan.FromSeconds(3);

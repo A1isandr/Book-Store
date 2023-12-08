@@ -16,7 +16,7 @@ namespace Book_Store.MVVM.ViewModel.shop
     {
         private readonly StoreContext db = new();
 
-        private RelayCommand? _bookCommand;
+        private RelayCommand? _bookClickedCommand;
 
         public ObservableCollection<ShopBook> Books { get; set; }
 
@@ -29,11 +29,11 @@ namespace Book_Store.MVVM.ViewModel.shop
             Books = db.ShopBooks.Local.ToObservableCollection();
         }
 
-        public RelayCommand BookCommand
+        public RelayCommand BookClickedCommand
         {
             get
             {
-                return _bookCommand ??= new RelayCommand((o) =>
+                return _bookClickedCommand ??= new RelayCommand((o) =>
                 {
                     ShopBook book;
                     if (o is int bookId)

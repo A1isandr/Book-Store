@@ -13,7 +13,7 @@ namespace Book_Store.MVVM.ViewModel.library
 {
     class LibraryViewModel : ObservableObject
     {
-        private BookInfoViewModel BookInfoVM { get; set; }
+        private LibraryBookInfoViewModel BookInfoVM { get; set; }
         private LibraryBookCatalogViewModel CatalogVM { get; set; }
 
 		private RelayCommand? _returnToCatalogCommand;
@@ -65,7 +65,7 @@ namespace Book_Store.MVVM.ViewModel.library
 
         public LibraryViewModel()
         {
-            BookInfoVM = new BookInfoViewModel();
+            BookInfoVM = new LibraryBookInfoViewModel();
             CatalogVM = new LibraryBookCatalogViewModel();
 
             CatalogVM.BookClicked += CatalogVM_BookClicked;
@@ -76,6 +76,9 @@ namespace Book_Store.MVVM.ViewModel.library
 			ReturnButtonVisibility = Visibility.Collapsed;
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public RelayCommand ReturnToCatalogCommand
 		{
 			get
@@ -96,7 +99,7 @@ namespace Book_Store.MVVM.ViewModel.library
 		/// <param name="e"></param>
 		private void CatalogVM_BookClicked(object? sender, ElementClickedEventArgs e)
         {
-            if (e.EventInfo is Book book)
+            if (e.EventInfo is LibraryBook book)
             {
                 BookInfoVM.Book = book;
                 CurrentView = BookInfoVM;
@@ -113,7 +116,7 @@ namespace Book_Store.MVVM.ViewModel.library
         /// <param name=""></param>
         public void AddNewBook(object? sender, ElementClickedEventArgs e)
         {
-			if (e.EventInfo is ObservableCollection<Book> books)
+			if (e.EventInfo is ObservableCollection<ShopBook> books)
 			{
 				foreach (var book in books)
 				{

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Book_Store.MVVM.View
 {
     /// <summary>
-    /// Логика взаимодействия для BookInfo.xaml
+    /// Логика взаимодействия для LibraryBookInfo.xaml
     /// </summary>
-    public partial class BookInfo : UserControl
+    public partial class LibraryBookInfo : UserControl
     {
-        public BookInfo()
+        public LibraryBookInfo()
         {
             InitializeComponent();
         }

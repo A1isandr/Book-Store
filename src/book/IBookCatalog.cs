@@ -13,7 +13,7 @@ namespace Book_Store.src.book
 		/// <summary>
 		/// Opens detailed information about chosen book.
 		/// </summary>
-		public RelayCommand BookCommand { get; }
+		public RelayCommand BookClickedCommand { get; }
 		/// <summary>
 		/// Collection of books presented in the catalog.
 		/// </summary>

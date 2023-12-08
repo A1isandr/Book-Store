@@ -18,7 +18,7 @@ namespace Book_Store.MVVM.ViewModel.library
     {
         private readonly StoreContext db = new();
 
-        private RelayCommand? _bookCommand;
+        private RelayCommand? _bookClickedCommand;
 
         public ObservableCollection<LibraryBook> Books { get; set; }
 
@@ -33,11 +33,11 @@ namespace Book_Store.MVVM.ViewModel.library
             Books.CollectionChanged += RefreshDB;
         }
 
-        public RelayCommand BookCommand
+        public RelayCommand BookClickedCommand
         {
             get
             {
-                return _bookCommand ??= new RelayCommand((o) =>
+                return _bookClickedCommand ??= new RelayCommand((o) =>
                 {
                     LibraryBook book;
                     if (o is int bookId)
