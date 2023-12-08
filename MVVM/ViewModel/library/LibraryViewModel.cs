@@ -113,20 +113,23 @@ namespace Book_Store.MVVM.ViewModel.library
         /// <param name=""></param>
         public void AddNewBook(object? sender, ElementClickedEventArgs e)
         {
-			if (e.EventInfo is Book book)
+			if (e.EventInfo is ObservableCollection<Book> books)
 			{
-				LibraryBook libraryBook = new()
+				foreach (var book in books)
 				{
-					Title = book.Title,
-					Genre = book.Genre,
-					PublicationDate = book.PublicationDate,
-					Description = book.Description,
-					Author = book.Author,
-					Cover = book.Cover,
-					DateAdded = DateTime.UtcNow.ToString()
-				};
+					LibraryBook libraryBook = new()
+					{
+						Title = book.Title,
+						Genre = book.Genre,
+						PublicationDate = book.PublicationDate,
+						Description = book.Description,
+						Author = book.Author,
+						Cover = book.Cover,
+						DateAdded = DateTime.UtcNow.ToString()
+					};
 
-				CatalogVM.Books.Add(libraryBook);
+					CatalogVM.Books.Add(libraryBook);
+				}
 			}
 		}
     }

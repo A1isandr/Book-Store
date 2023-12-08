@@ -35,7 +35,6 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
                 <Button Name="ReturnToCatalog"
@@ -43,11 +42,12 @@
                         Content="❮"
                         Width="30"
                         Height="30"
+                        FontSize="20"
                         Margin="0, 0, 20, 0"
                         Background="White"
                         Visibility="{Binding ReturnButtonVisibility}"
                         Command="{Binding ReturnToCatalogCommand}"
-                        Style="{StaticResource ReturnButton}">
+                        Style="{StaticResource CommonButton}">
 
                     <Button.Effect>
                         <DropShadowEffect
@@ -75,23 +75,6 @@
                     TextTrimming="CharacterEllipsis"
                     Foreground="{StaticResource SecondaryForegroundBrush}"
                     VerticalAlignment="Center"/>
-
-                <Button
-                    Grid.Column="3"
-                    Width="30"
-                    Height="30"
-                    Background="White"
-                    Style="{StaticResource CartButton}">
-
-                    <Button.Effect>
-                        <DropShadowEffect
-                            Color="Black"
-                            BlurRadius="10" 
-                            Opacity="0.5" 
-                            ShadowDepth="0"
-                            Direction="0"/>
-                    </Button.Effect>
-                </Button>
             </Grid>
         </Border>
 
@@ -119,7 +102,7 @@
                         Height="50"
                         Background="#39e34a"
                         Padding="5"
-                        Margin="10"
+                        Margin="10, 10, 10, 2"
                         Panel.ZIndex="2">
 
                         <Border.Effect>

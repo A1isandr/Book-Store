@@ -6,16 +6,19 @@
     <SolidColorBrush x:Key="ViewBackgroundBrush"
                      Color="#ffdbaf"/>
     <SolidColorBrush x:Key="ViewTopBarBackgroundBrush"
-                     Color="#c97b42"/>
+                     Color="#eb9d65"/>
     <SolidColorBrush x:Key="SecondaryForegroundBrush"
                      Color="White"/>
     <SolidColorBrush x:Key="MainForegroundBrush"
-                     Color="BLack"/>
+                     Color="Black"/>
     <SolidColorBrush x:Key="WindowBackgroundBrush"
-                     Color="BLack"/>
+                     Color="Black"/>
     <SolidColorBrush x:Key="HeaderBackgroundBrush"
-                     Color="BLack"/>
+                     Color="Black"/>
     <SolidColorBrush x:Key="BorderBackgroundBrush"
                      Color="White"/>
-
+    <SolidColorBrush x:Key="AcceptBrush"
+                     Color="#39e34a"/>
+    <SolidColorBrush x:Key="RefuseBrush"
+                     Color="#f75c5c"/>
 </ResourceDictionary>

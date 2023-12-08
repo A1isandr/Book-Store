@@ -12,6 +12,8 @@ using System.Data.SqlTypes;
 using Book_Store.MVVM.View;
 using System.Reflection;
 using Microsoft.Extensions.DependencyModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 
 namespace Book_Store.MVVM.ViewModel.shop
 {
@@ -24,10 +26,10 @@ namespace Book_Store.MVVM.ViewModel.shop
 
         private RelayCommand? _returnToCatalogCommand;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public event EventHandler<ElementClickedEventArgs>? BookPurchased;
+		/// <summary>
+		/// Fires when the user adds book to the cart.
+		/// </summary>
+		public event EventHandler<ElementClickedEventArgs>? BookAddedToCart;
 
         private Visibility returnButtonVisibility;
         /// <summary>
@@ -74,15 +76,16 @@ namespace Book_Store.MVVM.ViewModel.shop
             }
         }
 
-        public ShopViewModel()
+		public ShopViewModel()
         {
             BookInfoVM = new BookInfoViewModel();
             CatalogVM = new ShopBookCatalogViewModel();
 
             Notifications = new ObservableCollection<Notification>();
+            Notifications.CollectionChanged += Notifications_CollectionChanged;
 
-            CatalogVM.BookClicked += CatalogVM_BookClicked;
-            BookInfoVM.BookPurchased += CatalogVM_BookPurchased;
+			CatalogVM.BookClicked += CatalogVM_BookClicked;
+            BookInfoVM.BookAddedToCart += CatalogVM_BookPurchased;
 
             CurrentView = CatalogVM;
 
@@ -90,6 +93,9 @@ namespace Book_Store.MVVM.ViewModel.shop
 			ReturnButtonVisibility = Visibility.Collapsed;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public RelayCommand ReturnToCatalogCommand
         {
             get
@@ -97,8 +103,8 @@ namespace Book_Store.MVVM.ViewModel.shop
 				return _returnToCatalogCommand ??= new RelayCommand((o) =>
 				{
 					CurrentView = CatalogVM;
-					ReturnButtonVisibility = Visibility.Collapsed;
                     Title = "Магазин";
+                    ReturnButtonVisibility = Visibility.Collapsed;
 				});
 			}
 		}
@@ -116,15 +122,33 @@ namespace Book_Store.MVVM.ViewModel.shop
                 CurrentView = BookInfoVM;
 
                 Title += $" / {book.Title}";
-                ReturnButtonVisibility = Visibility.Visible;
-            }
+				ReturnButtonVisibility = Visibility.Visible;
+			}
         }
 
 		private void CatalogVM_BookPurchased(object? sender, ElementClickedEventArgs e)
         {
-            BookPurchased?.Invoke(sender, e);
-
+            BookAddedToCart?.Invoke(sender, e);
             Notifications.Add(new Notification("Добавлено в корзину"));
+		}
+
+        private void Notifications_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems?.Count != 0)
+            {
+                // Запуск таймера для удаления уведомлений
+                var timer = new System.Windows.Threading.DispatcherTimer();
+                timer.Tick += (sender, e) =>
+                {
+                    // Удаление уведомления через определенное время
+                    if (Notifications.Count > 0)
+                    {
+                        Notifications.RemoveAt(0);
+                    }
+                };
+                timer.Interval = TimeSpan.FromSeconds(3);
+                timer.Start();
+            }
         }
-	}
+    }
 }

@@ -17,7 +17,7 @@ namespace Book_Store.MVVM.ViewModel
 		/// <summary>
 		/// Fires when certain book is purchased by a user.
 		/// </summary>
-		public event EventHandler<ElementClickedEventArgs>? BookPurchased;
+		public event EventHandler<ElementClickedEventArgs>? BookAddedToCart;
 
 		private Book? _book;
 		/// <summary>
@@ -54,7 +54,7 @@ namespace Book_Store.MVVM.ViewModel
 				{
                     if (Book is not null)
                     {
-						BookPurchased?.Invoke(this, new ElementClickedEventArgs(Book));
+						BookAddedToCart?.Invoke(this, new ElementClickedEventArgs(Book));
 					}
 				});
 			}

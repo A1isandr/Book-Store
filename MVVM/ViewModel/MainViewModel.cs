@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Book_Store.MVVM.Model;
+using Book_Store.MVVM.View;
 using Book_Store.MVVM.ViewModel.library;
 using Book_Store.MVVM.ViewModel.shop;
 using Book_Store.src;
@@ -19,9 +20,11 @@ namespace Book_Store.MVVM.ViewModel
 
         private RelayCommand? _shopCommand;
         private RelayCommand? _libraryCommand;
+		private RelayCommand? _cartCommand;
 
 		private ShopViewModel ShopVM { get; set; }
 		private LibraryViewModel LibraryVM { get; set; }
+		public CartViewModel CartVM { get; set; }
 
 		private object? _currentView;
         /// <summary>
@@ -41,8 +44,10 @@ namespace Book_Store.MVVM.ViewModel
         {
             ShopVM = new ShopViewModel();
 			LibraryVM = new LibraryViewModel();
+			CartVM = new CartViewModel();
 
-			ShopVM.BookPurchased += LibraryVM.AddNewBook;
+			ShopVM.BookAddedToCart += AddBookToCart;
+			CartVM.Checkout += LibraryVM.AddNewBook;
 
 			CurrentView = ShopVM;
         }
@@ -71,6 +76,20 @@ namespace Book_Store.MVVM.ViewModel
 				return _libraryCommand ??= new RelayCommand((o) =>
 				{
 					CurrentView = LibraryVM;
+				});
+			}
+		}
+
+		/// <summary>
+		/// Changes the current view to cart.
+		/// </summary>
+		public RelayCommand CartCommand
+		{
+			get
+			{
+				return _cartCommand ??= new RelayCommand((o) =>
+				{
+					CurrentView = CartVM;
 				});
 			}
 		}
@@ -127,6 +146,14 @@ namespace Book_Store.MVVM.ViewModel
 						window.WindowState = WindowState.Minimized;
 					}
 				});
+			}
+		}
+
+		private void AddBookToCart(object? sender, ElementClickedEventArgs e)
+		{
+			if (e.EventInfo is ShopBook book)
+			{
+				CartVM.Books.Add(book);
 			}
 		}
 	}

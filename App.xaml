@@ -19,8 +19,7 @@
                 <ResourceDictionary Source="dict\color-scheme\ColorScheme.xaml" />
                 <ResourceDictionary Source="dict\Book.xaml" />
                 <ResourceDictionary Source="dict\BookInfo.xaml" />
-                <ResourceDictionary Source="dict\PurchaseButtons.xaml" />
-                <ResourceDictionary Source="dict\ReturnButtons.xaml" />
+                <ResourceDictionary Source="dict\Buttons.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type vms:ShopViewModel}">
@@ -34,6 +33,9 @@
             </DataTemplate>
             <DataTemplate DataType="{x:Type vms:ShopBookCatalogViewModel}">
                 <v:BookCatalog/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:CartViewModel}">
+                <v:Cart/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type vml:LibraryBookCatalogViewModel}">
                 <v:BookCatalog/>

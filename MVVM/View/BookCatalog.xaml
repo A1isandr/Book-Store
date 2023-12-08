@@ -9,12 +9,12 @@
              Background="{StaticResource ViewBackgroundBrush}"
              d:DesignHeight="450" d:DesignWidth="800">
     <ScrollViewer
-    Grid.Row="1"
-    HorizontalScrollBarVisibility="Hidden"
-    VerticalScrollBarVisibility="Auto">
+        Grid.Row="1"
+        HorizontalScrollBarVisibility="Hidden"
+        VerticalScrollBarVisibility="Auto">
 
         <Grid Name="Main"
-      MaxWidth="{Binding ElementName=Catalog, Path=ActualWidth}">
+            MaxWidth="{Binding ElementName=Catalog, Path=ActualWidth}">
 
             <ItemsControl ItemsSource="{Binding Books}">
                 <ItemsControl.ItemsPanel>
@@ -36,23 +36,23 @@
                                 <Image Source="{Binding Cover}"/>
 
                                 <TextBlock Text="{Binding Title}" 
-                               Margin="2"
-                               FontSize="16"
-                               FontFamily="/fnt/#Oswald"
-                               FontWeight="Medium"
-                               TextWrapping="Wrap"
-                               TextAlignment="Center"
-                               HorizontalAlignment="Center"
-                               Foreground="{StaticResource MainForegroundBrush}"/>
+                                        Margin="2"
+                                        FontSize="16"
+                                        FontFamily="/fnt/#Oswald"
+                                        FontWeight="Medium"
+                                        TextWrapping="Wrap"
+                                        TextAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Foreground="{StaticResource MainForegroundBrush}"/>
 
                                 <TextBlock Text="{Binding Author}" 
-                               Margin="2, 2, 2, 5"
-                               FontSize="14"
-                               FontFamily="/fnt/#Oswald"
-                               TextWrapping="Wrap"
-                               TextAlignment="Center"
-                               HorizontalAlignment="Center"
-                               Foreground="{StaticResource MainForegroundBrush}"/>
+                                        Margin="2, 2, 2, 5"
+                                        FontSize="14"
+                                        FontFamily="/fnt/#Oswald"
+                                        TextWrapping="Wrap"
+                                        TextAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Foreground="{StaticResource MainForegroundBrush}"/>
                             </StackPanel>
                         </Border>
                     </DataTemplate>

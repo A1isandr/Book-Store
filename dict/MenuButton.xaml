@@ -6,7 +6,7 @@
     <SolidColorBrush x:Key="MenuButtonMouseOverBrush"
                 Color="#824227"/>
 
-    <Style x:Key="MenuButton" 
+    <Style x:Key="MenuButton1" 
            TargetType="{x:Type ToggleButton}"
            BasedOn="{StaticResource {x:Type ToggleButton}}">
         
@@ -14,10 +14,12 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="RadioButton">
-                        <Border>
+                        <Border
+                            CornerRadius="10">
+                            
                             <Grid VerticalAlignment="Stretch"
-                                      HorizontalAlignment="Stretch"
-                                      Background="{TemplateBinding Background}">
+                                  HorizontalAlignment="Stretch"
+                                  Background="{TemplateBinding Background}">
 
                                 <TextBlock Text="{TemplateBinding Property=Content}"
                                         FontFamily="/fnt/#Lobster"

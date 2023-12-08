@@ -36,13 +36,14 @@
         </Image>
 
         <ScrollViewer
-        Grid.Row="0"
-        Grid.Column="1"
-        Margin="20, 20, 10, 0"
-        VerticalScrollBarVisibility="Auto"
-        HorizontalScrollBarVisibility="Disabled">
+            Grid.Row="0"
+            Grid.Column="1"
+            Margin="0, 20, 0, 0"
+            VerticalScrollBarVisibility="Auto"
+            HorizontalScrollBarVisibility="Disabled">
 
-            <Grid>
+            <Grid
+                Margin="10, 10, 10, 0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -51,9 +52,9 @@
                 </Grid.RowDefinitions>
 
                 <Border Name="Author"
-                Grid.Row="0"
-                Margin="0, 0, 0, 20"
-                Style="{StaticResource BookInfoBorder}">
+                    Grid.Row="0"
+                    Margin="0, 0, 0, 20"
+                    Style="{StaticResource BookInfoBorder}">
 
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -77,9 +78,9 @@
                 </Border>
 
                 <Border Name="Genre"
-                Grid.Row="1"
-                Margin="0, 0, 0, 20"
-                Style="{StaticResource BookInfoBorder}">
+                    Grid.Row="1"
+                    Margin="0, 0, 0, 20"
+                    Style="{StaticResource BookInfoBorder}">
 
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -103,9 +104,9 @@
                 </Border>
 
                 <Border Name="PublicationDate"
-                Grid.Row="2"
-                Margin="0, 0, 0, 20"
-                Style="{StaticResource BookInfoBorder}">
+                    Grid.Row="2"
+                    Margin="0, 0, 0, 20"
+                    Style="{StaticResource BookInfoBorder}">
 
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -129,9 +130,9 @@
                 </Border>
 
                 <Border Name="Description"
-                Grid.Row="3"
-                Margin="0, 0, 0, 20"
-                Style="{StaticResource BookInfoBorder}">
+                    Grid.Row="3"
+                    Margin="0, 0, 0, 20"
+                    Style="{StaticResource BookInfoBorder}">
 
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -157,7 +158,21 @@
             </Grid>
         </ScrollViewer>
 
-        <StackPanel Name="PurchaseButton"
+        <Border
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Background="{StaticResource ViewBackgroundBrush}">
+
+            <Border.Effect>
+                <DropShadowEffect
+                    Color="Black"
+                    BlurRadius="20" 
+                    Opacity="0.5" 
+                    ShadowDepth="0"
+                    Direction="0"/>
+            </Border.Effect>
+
+            <StackPanel Name="PurchaseButton"
                 Grid.Row="1"
                 Grid.ColumnSpan="2"
                 Orientation="Horizontal"
@@ -165,50 +180,66 @@
                 VerticalAlignment="Center"
                 Margin="0, 20, 0, 30">
 
-            <Button Name="Buy"
-            Width="100"
-            Height="50"
-            Background="#39e34a"
-            Style="{StaticResource PurchaseButton}"
-            Command="{Binding PurchaseCommand}">
+                <Button Name="Buy"
+                    Width="100"
+                    Height="50"
+                    Content="Купить"
+                    Background="{StaticResource AcceptBrush}"
+                    FontFamily="/fnt/#Lobster"
+                    Panel.ZIndex="2"
+                    Style="{StaticResource PurchaseButton}"
+                    Command="{Binding PurchaseCommand}">
 
-                <Button.Effect>
-                    <DropShadowEffect
-                        Color="#39e34a"
-                        BlurRadius="0" 
-                        Opacity="0.0" 
-                        ShadowDepth="0"
-                        Direction="0"/>
-                </Button.Effect>
-            </Button>
+                    <Button.Effect>
+                        <DropShadowEffect
+                            Color="#39e34a"
+                            BlurRadius="20" 
+                            Opacity="0.5" 
+                            ShadowDepth="0"
+                            Direction="0"/>
+                    </Button.Effect>
+                </Button>
 
-            <Border
-            CornerRadius="0, 10, 10, 0"
-            Background="White"
-            Height="{Binding ElementName=Buy, Path=ActualHeight}">
+                <Border
+                    CornerRadius="0, 10, 10, 0"
+                    Background="White"
+                    Panel.ZIndex="1"
+                    Padding="5"
+                    Height="{Binding ElementName=Buy, Path=ActualHeight}"
+                    Style="{StaticResource BookInfoBorder}">
 
-                <StackPanel 
-                Orientation="Horizontal">
+                    <Border.Effect>
+                        <DropShadowEffect
+                            Color="Black"
+                            BlurRadius="0" 
+                            Opacity="0" 
+                            ShadowDepth="0"
+                            Direction="0"/>
+                    </Border.Effect>
 
-                    <TextBlock
-                        Text="{Binding Book.Price}"
-                        FontFamily="/fnt/#Oswald"
-                        FontSize="20"
-                        FontWeight="Medium"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Padding="10, 10, 0, 10"/>
+                    <StackPanel 
+                        Orientation="Horizontal">
 
-                    <Label
-                    Content="₽"
-                    FontFamily="/fnt/#Oswald"
-                    FontSize="20"
-                    FontWeight="Medium"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Padding="10"/>
-                </StackPanel>
-            </Border>
-        </StackPanel>
+                        <TextBlock
+                            Text="{Binding Book.Price}"
+                            FontFamily="/fnt/#Oswald"
+                            FontSize="20"
+                            FontWeight="Medium"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Padding="10, 10, 0, 10"/>
+
+                        <Label
+                            Content="₽"
+                            FontFamily="/fnt/#Oswald"
+                            FontSize="20"
+                            FontWeight="Medium"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
     </Grid>
 </UserControl>
