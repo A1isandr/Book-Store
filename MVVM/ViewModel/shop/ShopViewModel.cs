@@ -22,8 +22,6 @@ namespace Book_Store.MVVM.ViewModel.shop
         private ShopBookInfoViewModel BookInfoVM { get; set; }
         private ShopBookCatalogViewModel CatalogVM { get; set; }
 
-        public ObservableCollection<Notification> Notifications { get; set; }
-
         private RelayCommand? _returnToCatalogCommand;
 
 		/// <summary>
@@ -81,9 +79,6 @@ namespace Book_Store.MVVM.ViewModel.shop
             BookInfoVM = new ShopBookInfoViewModel();
             CatalogVM = new ShopBookCatalogViewModel();
 
-            Notifications = new ObservableCollection<Notification>();
-            Notifications.CollectionChanged += Notifications_CollectionChanged;
-
 			CatalogVM.BookClicked += CatalogVM_BookClicked;
             BookInfoVM.BookAddedToCart += CatalogVM_BookAddedToCart;
 
@@ -94,7 +89,7 @@ namespace Book_Store.MVVM.ViewModel.shop
         }
 
         /// <summary>
-        /// 
+        /// Command for returning back to catalog
         /// </summary>
         public RelayCommand ReturnToCatalogCommand
         {
@@ -129,31 +124,6 @@ namespace Book_Store.MVVM.ViewModel.shop
         private void CatalogVM_BookAddedToCart(object? sender, ElementClickedEventArgs e)
         {
             BookAddedToCart?.Invoke(sender, e);
-            Notifications.Add(new Notification()
-            {
-                Text = $"Добавлено в корзину {DateTime.Now.Minute}:{DateTime.Now.Second}",
-                Id = Notifications.Count,
-            });  
 		}
-
-        private void Notifications_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.NewItems?.Count != 0)
-            {
-                // Запуск таймера для удаления уведомлений
-                var timer = new System.Windows.Threading.DispatcherTimer();
-                timer.Tick += (sender, e) =>
-                {
-                    timer.Stop();
-                    // Удаление уведомления через определенное время
-                    if (Notifications.Count > 0)
-                    {
-                        Notifications.Remove(Notifications.First((x) => x.Id == 0));
-                    }
-                };
-                timer.Interval = TimeSpan.FromSeconds(3);
-                timer.Start();
-            }
-        }
     }
 }

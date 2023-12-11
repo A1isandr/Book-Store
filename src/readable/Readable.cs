@@ -9,35 +9,36 @@ namespace Book_Store.src
     /// <summary>
     /// Describes the book type.
     /// </summary>
-    abstract class Book
+    abstract class Readable
     {
         /// <summary>
         /// Book's Id.
         /// </summary>
-        public abstract int Id { get; set; }
+        public int Id { get; set; }
         /// <summary>
         /// Book's title.
         /// </summary>
-        public abstract string? Title { get; set; }
+        public string? Title { get; set; }
         /// <summary>
         /// Book's genre.
         /// </summary>
-		public abstract string? Genre { get; set; }
+		public string? Genre { get; set; }
         /// <summary>
         /// Book's first publication date.
         /// </summary>
-        public abstract string? PublicationDate { get; set; }
+        public string? PublicationDate { get; set; }
 		/// <summary>
 		/// Book's description.
 		/// </summary>
-		public abstract string? Description { get; set; }
-        /// <summary>
-        /// Book's author.
-        /// </summary>
-        public abstract string? Author { get; set; }
+		public string? Description { get; set; }
         /// <summary>
         /// Book's cover.
         /// </summary>
-		public abstract string? Cover { get; set; }
+		public string? Cover { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public abstract decimal CalculatePrice();
 	}
 }

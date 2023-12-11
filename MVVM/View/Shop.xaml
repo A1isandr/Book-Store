@@ -81,48 +81,7 @@
         <ContentControl
             Grid.Row="1"
             Content="{Binding CurrentView}">
-            
+
         </ContentControl>
-
-        <ItemsControl ItemsSource="{Binding Notifications}"
-                      Grid.Row="1">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel Orientation="Vertical"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Border Name="PurcahseNotification"
-                        Grid.Row="1"
-                        CornerRadius="10"
-                        VerticalAlignment="Top"
-                        HorizontalAlignment="Right"
-                        Width="200"
-                        Height="50"
-                        Background="#39e34a"
-                        Padding="5"
-                        Margin="10, 10, 10, 2"
-                        Panel.ZIndex="2">
-
-                        <Border.Effect>
-                            <DropShadowEffect
-                                Color="Black" 
-                                BlurRadius="10" 
-                                Opacity="0.5" 
-                                ShadowDepth="0"
-                                Direction="0"/>
-                        </Border.Effect>
-
-                        <TextBlock
-                            Text="{Binding Text}"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            FontSize="18"
-                            FontFamily="/fnt/#Oswald"/>
-                    </Border>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
     </Grid>
 </UserControl>
