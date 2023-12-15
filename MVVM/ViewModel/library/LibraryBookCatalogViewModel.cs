@@ -13,37 +13,36 @@ using System.Windows;
 
 namespace Book_Store.MVVM.ViewModel.library
 {
-    class LibraryBookCatalogViewModel : ObservableObject,
-                                        IBookCatalog<LibraryBook, ElementClickedEventArgs>
+    class LibraryBookCatalogViewModel : ObservableObject
     {
         private readonly StoreContext db = new();
 
-        private RelayCommand? _bookClickedCommand;
+        private RelayCommand? _itemClickedCommand;
 
-        public ObservableCollection<LibraryBook> Books { get; set; }
+        public ObservableCollection<Book> Readables { get; set; }
 
-        public event EventHandler<ElementClickedEventArgs>? BookClicked;
+        public event EventHandler<ItemEventArgs>? ItemClicked;
 
         public LibraryBookCatalogViewModel()
         {
             db.Database.EnsureCreated();
-            db.LibraryBooks.Load();
-            Books = db.LibraryBooks.Local.ToObservableCollection();
+            db.Library.Load();
+			Readables = db.Library.Local.ToObservableCollection();
 
-            Books.CollectionChanged += RefreshDB;
+			Readables.CollectionChanged += RefreshDB;
         }
 
-        public RelayCommand BookClickedCommand
+        public RelayCommand ItemClickedCommand
         {
             get
             {
-                return _bookClickedCommand ??= new RelayCommand((o) =>
+                return _itemClickedCommand ??= new RelayCommand((o) =>
                 {
-                    LibraryBook book;
+                    Readable book;
                     if (o is int bookId)
                     {
-                        book = Books.First(x => x.Id == bookId);
-                        BookClicked?.Invoke(this, new ElementClickedEventArgs(book));
+                        //book = Readables.First(x => x.id == bookId);
+                        //ItemClicked?.Invoke(this, new ItemEventArgs(book));
                     }
                 });
             }
@@ -53,9 +52,9 @@ namespace Book_Store.MVVM.ViewModel.library
         {
             if (e.NewItems is not null)
             {
-                foreach (var item in e.NewItems)
+                foreach (Readable item in e.NewItems)
                 {
-					db.LibraryBooks.AddRange((LibraryBook)item);
+					//db.Library.AddRange(item);
 				}
 			}
 

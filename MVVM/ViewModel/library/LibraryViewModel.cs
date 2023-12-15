@@ -68,7 +68,7 @@ namespace Book_Store.MVVM.ViewModel.library
             BookInfoVM = new LibraryBookInfoViewModel();
             CatalogVM = new LibraryBookCatalogViewModel();
 
-            CatalogVM.BookClicked += CatalogVM_BookClicked;
+            CatalogVM.ItemClicked += CatalogVM_BookClicked;
 
             CurrentView = CatalogVM;
 
@@ -97,16 +97,13 @@ namespace Book_Store.MVVM.ViewModel.library
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void CatalogVM_BookClicked(object? sender, ElementClickedEventArgs e)
+		private void CatalogVM_BookClicked(object? sender, ItemEventArgs e)
         {
-            if (e.EventInfo is LibraryBook book)
-            {
-                BookInfoVM.Book = book;
-                CurrentView = BookInfoVM;
+            BookInfoVM.Book = e.Item;
+            CurrentView = BookInfoVM;
 
-                Title += $" / {book.Title}";
-				ReturnButtonVisibility = Visibility.Visible;
-			}
+            Title += $" / {e.Item.Title}";
+			ReturnButtonVisibility = Visibility.Visible;
         }
 
         /// <summary>
@@ -114,25 +111,11 @@ namespace Book_Store.MVVM.ViewModel.library
         /// </summary>
         /// <param name="sender"></param>
         /// <param name=""></param>
-        public void AddNewBook(object? sender, ElementClickedEventArgs e)
+        public void AddNewBook(object? sender, ItemsEventArgs e)
         {
-			if (e.EventInfo is ObservableCollection<ShopBook> books)
+			foreach (var item in e.Items)
 			{
-				foreach (var book in books)
-				{
-					LibraryBook libraryBook = new()
-					{
-						Title = book.Title,
-						Genre = book.Genre,
-						PublicationDate = book.PublicationDate,
-						Description = book.Description,
-						Author = book.Author,
-						Cover = book.Cover,
-						DateAdded = DateTime.UtcNow.ToString()
-					};
-
-					CatalogVM.Books.Add(libraryBook);
-				}
+				//CatalogVM.Readables.Add(item);
 			}
 		}
     }

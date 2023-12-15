@@ -6,16 +6,21 @@ using System.Threading.Tasks;
 
 namespace Book_Store.src.readable
 {
-    internal class Magazine : Readable
+	/// <summary>
+	/// Describes basic behaviour of a magazine.
+	/// </summary>
+	internal class Magazine : Readable
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        public string? Number {  get; set; }
-
-        public override decimal CalculatePrice()
+		public override decimal Price
         {
-            throw new NotImplementedException();
+            get
+            {
+				// Пример формулы: базовая цена + (цена за статью * количество статей)
+				decimal basePrice = 4.99m;
+				decimal pricePerArticle = 1.25m;
+
+				return basePrice + (pricePerArticle * ContentCount);
+			}
         }
-    }
+	}
 }

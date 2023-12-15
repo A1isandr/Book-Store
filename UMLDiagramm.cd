@@ -1,12 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Book_Store.src.CommonBook">
-    <Position X="2.75" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAICAAABAICgAEAEgAIAABAAAAAAAAAAAAAACCAAAAA=</HashCode>
-      <FileName>src\book\CommonBook.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Book_Store.src.ObservableObject">
     <Position X="0.5" Y="9.25" Width="1.5" />
     <TypeIdentifier>
@@ -14,20 +7,6 @@
       <FileName>src\ObservableObject.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="Book_Store.MVVM.Model.LibraryBook">
-    <Position X="7.25" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
-      <FileName>MVVM\Model\LibraryCatalogModel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Book_Store.MVVM.Model.ShopBook">
-    <Position X="7.25" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AgAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>MVVM\Model\ShopCatalogModel.cs</FileName>
-    </TypeIdentifier>
   </Class>
   <Class Name="Book_Store.MVVM.ViewModel.MainViewModel">
     <Position X="2.75" Y="9.25" Width="1.5" />
@@ -37,24 +16,10 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Book_Store.src.Book">
-    <Position X="0.5" Y="2.5" Width="1.5" />
+    <Position X="3" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAICAAAAAAAgAEAAgAIAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
-      <FileName>src\book\Book.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Book_Store.src.CommonLibraryBook">
-    <Position X="5" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
-      <FileName>src\book\CommonLibraryBook.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Book_Store.src.CommonShopBook">
-    <Position X="5" Y="4.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\book\CommonShopBook.cs</FileName>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>src\readable\Book.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Book_Store.MVVM.ViewModel.library.LibraryBookCatalogViewModel">
@@ -68,7 +33,7 @@
   <Class Name="Book_Store.MVVM.ViewModel.library.LibraryBookInfoViewModel">
     <Position X="8.75" Y="15.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAgAAAABACAAAAA=</HashCode>
       <FileName>MVVM\ViewModel\library\LibraryBookInfoViewModel.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -99,7 +64,7 @@
   <Class Name="Book_Store.MVVM.ViewModel.shop.ShopViewModel">
     <Position X="2.75" Y="20.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAACAIggCEFSAAFBAAAAAAAAAAAgAAAAAAAAAAE=</HashCode>
+      <HashCode>AAAAAAACAIgAAEFSAAFBCAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
       <FileName>MVVM\ViewModel\shop\ShopViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -108,6 +73,20 @@
     <TypeIdentifier>
       <HashCode>ACAAAAAAAgAABAAAAAADAAkAgAKAYAAAAAAAAAAAAAA=</HashCode>
       <FileName>MVVM\ViewModel\CartViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Book_Store.src.Readable">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAgAEAAgAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>src\readable\Readable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Book_Store.src.readable.Magazine">
+    <Position X="3" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>src\readable\Magazine.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

@@ -15,14 +15,14 @@ using System.Windows.Shapes;
 
 namespace Book_Store.MVVM.View
 {
-    /// <summary>
-    /// Логика взаимодействия для BookCatalog.xaml
-    /// </summary>
-    public partial class BookCatalog : UserControl
-    {
-        public BookCatalog()
-        {
-            InitializeComponent();
-        }
-    }
+	/// <summary>
+	/// Логика взаимодействия для LibraryReadableInfo.xaml
+	/// </summary>
+	public partial class LibraryReadableInfo : UserControl
+	{
+		public LibraryReadableInfo()
+		{
+			InitializeComponent();
+		}
+	}
 }

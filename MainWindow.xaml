@@ -156,7 +156,7 @@
                                  IsChecked="True"/>
 
                     <RadioButton Name="MenuLibraryButton"
-                                 Content="Моя Библиотека"
+                                 Content="Библиотека"
                                  Height="50"
                                  Foreground="{StaticResource MainForegroundBrush}"
                                  Style="{StaticResource MenuButton}"

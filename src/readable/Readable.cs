@@ -1,44 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Book_Store.src
+﻿namespace Book_Store.src
 {
-    /// <summary>
-    /// Describes the book type.
-    /// </summary>
-    abstract class Readable
+	/// <summary>
+	/// Describes the readable type.
+	/// </summary>
+	abstract class Readable
     {
-        /// <summary>
-        /// Book's Id.
-        /// </summary>
-        public int Id { get; set; }
-        /// <summary>
-        /// Book's title.
-        /// </summary>
-        public string? Title { get; set; }
-        /// <summary>
-        /// Book's genre.
-        /// </summary>
-		public string? Genre { get; set; }
-        /// <summary>
-        /// Book's first publication date.
-        /// </summary>
-        public string? PublicationDate { get; set; }
 		/// <summary>
-		/// Book's description.
+		/// Id of the readable object.
+		/// </summary>
+		public int id { get; set; }
+		/// <summary>
+		/// Title of the readable object.
+		/// </summary>
+		public string? Title { get; set; }
+		/// <summary>
+		/// Author of the readable object.
+		/// </summary>
+		public string? Author { get; set; }
+		/// <summary>
+		/// Genre of the readable object.
+		/// </summary>
+		public string? Genre { get; set; }
+		/// <summary>
+		/// Description of the readable object.
 		/// </summary>
 		public string? Description { get; set; }
-        /// <summary>
-        /// Book's cover.
-        /// </summary>
+		/// <summary>
+		/// Cover of the readable object.
+		/// </summary>
 		public string? Cover { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public abstract decimal CalculatePrice();
+		/// <summary>
+		/// Amount of pages or articles in the readable object.
+		/// </summary>
+		public int ContentCount { get; set; }
+		/// <summary>
+		/// Price of the readable object.
+		/// </summary>
+		/// <returns></returns>
+		public abstract decimal Price { get; }
 	}
 }

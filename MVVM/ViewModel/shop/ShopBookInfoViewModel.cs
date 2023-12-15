@@ -11,17 +11,16 @@ using Book_Store.src.book;
 
 namespace Book_Store.MVVM.ViewModel.shop
 {
-    internal class ShopBookInfoViewModel : ObservableObject, IBookInfo<ShopBook>
+    internal class ShopBookInfoViewModel : ObservableObject, IInfo
     {
-		private RelayCommand? _addToCartCommand;
+		public Readable? Book { get; set; }
 
 		/// <summary>
 		/// Fires when certain book is purchased by a user.
 		/// </summary>
-		public event EventHandler<ElementClickedEventArgs>? BookAddedToCart;
-		
-		public ShopBook? Book { get; set; }
+		public event EventHandler<ItemEventArgs>? ItemAddedToCart;
 
+		private RelayCommand? _addToCartCommand;
 		/// <summary>
 		/// Adds chosen book to user's library.
 		/// </summary>
@@ -33,7 +32,7 @@ namespace Book_Store.MVVM.ViewModel.shop
 				{
                     if (Book is not null)
                     {
-						BookAddedToCart?.Invoke(this, new ElementClickedEventArgs(Book));
+						ItemAddedToCart?.Invoke(this, new ItemEventArgs(Book));
 					}
 				});
 			}

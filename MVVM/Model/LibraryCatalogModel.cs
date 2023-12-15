@@ -9,20 +9,5 @@ using System.Threading.Tasks;
 
 namespace Book_Store.MVVM.Model
 {
-	/// <summary>
-	/// Describes behavior of library book.
-	/// </summary>
-	class LibraryBook : CommonLibraryBook
-	{
-		private string _dateAdded;
-
-		public override string DateAdded
-		{
-			get => _dateAdded;
-			set
-			{
-				_dateAdded = value;
-			}
-		}
-	}
+	
 }

@@ -14,13 +14,13 @@ namespace Book_Store.src
     class StoreContext : DbContext
     {
 		/// <summary>
-		/// Set of shop books.
+		/// Set of products.
 		/// </summary>
-		public DbSet<ShopBook> ShopBooks { get; set; } = null!;
+		public DbSet<Book> Products { get; set; } = null!;
 		/// <summary>
-		/// Set of library books.
+		/// Set of library.
 		/// </summary>
-		public DbSet<LibraryBook> LibraryBooks { get; set; } = null!;
+		public DbSet<Book> Library { get; set; } = null!;
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{

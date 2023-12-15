@@ -27,7 +27,7 @@ namespace Book_Store.MVVM.ViewModel.shop
 		/// <summary>
 		/// Fires when the user adds book to the cart.
 		/// </summary>
-		public event EventHandler<ElementClickedEventArgs>? BookAddedToCart;
+		public event EventHandler<ItemEventArgs>? ItemAddedToCart;
 
         private Visibility returnButtonVisibility;
         /// <summary>
@@ -79,8 +79,8 @@ namespace Book_Store.MVVM.ViewModel.shop
             BookInfoVM = new ShopBookInfoViewModel();
             CatalogVM = new ShopBookCatalogViewModel();
 
-			CatalogVM.BookClicked += CatalogVM_BookClicked;
-            BookInfoVM.BookAddedToCart += CatalogVM_BookAddedToCart;
+			CatalogVM.ItemClicked += CatalogVM_ItemClicked;
+            BookInfoVM.ItemAddedToCart += CatalogVM_ItemAddedToCart;
 
             CurrentView = CatalogVM;
 
@@ -109,21 +109,18 @@ namespace Book_Store.MVVM.ViewModel.shop
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CatalogVM_BookClicked(object? sender, ElementClickedEventArgs e)
+        private void CatalogVM_ItemClicked(object? sender, ItemEventArgs e)
         {
-            if (e.EventInfo is ShopBook book)
-            {
-                BookInfoVM.Book = book;
-                CurrentView = BookInfoVM;
+            BookInfoVM.Book = e.Item;
+            CurrentView = BookInfoVM;
 
-                Title += $" / {book.Title}";
-				ReturnButtonVisibility = Visibility.Visible;
-			}
+            Title += $" / {e.Item.Title}";
+			ReturnButtonVisibility = Visibility.Visible;
         }
 
-        private void CatalogVM_BookAddedToCart(object? sender, ElementClickedEventArgs e)
+        private void CatalogVM_ItemAddedToCart(object? sender, ItemEventArgs e)
         {
-            BookAddedToCart?.Invoke(sender, e);
+            ItemAddedToCart?.Invoke(sender, e);
 		}
     }
 }

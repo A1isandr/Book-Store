@@ -11,35 +11,33 @@ using Book_Store.src.book;
 
 namespace Book_Store.MVVM.ViewModel.shop
 {
-    class ShopBookCatalogViewModel : ObservableObject,
-                                     IBookCatalog<ShopBook, ElementClickedEventArgs>
+    class ShopBookCatalogViewModel : ObservableObject
     {
         private readonly StoreContext db = new();
 
-        private RelayCommand? _bookClickedCommand;
+        private RelayCommand? _itemClickedCommand;
 
-        public ObservableCollection<ShopBook> Books { get; set; }
+        public ObservableCollection<Book> Readables { get; set; }
 
-        public event EventHandler<ElementClickedEventArgs>? BookClicked;
+        public event EventHandler<ItemEventArgs>? ItemClicked;
 
         public ShopBookCatalogViewModel()
         {
             db.Database.EnsureCreated();
-            db.ShopBooks.Load();
-            Books = db.ShopBooks.Local.ToObservableCollection();
+            db.Products.Load();
+			Readables = db.Products.Local.ToObservableCollection();
         }
 
-        public RelayCommand BookClickedCommand
+        public RelayCommand ItemClickedCommand
         {
             get
             {
-                return _bookClickedCommand ??= new RelayCommand((o) =>
+                return _itemClickedCommand ??= new RelayCommand((o) =>
                 {
-                    ShopBook book;
-                    if (o is int bookId)
+                    if (o is int itemId)
                     {
-                        book = (ShopBook)Books.First(x => x.Id == bookId);
-                        BookClicked?.Invoke(this, new ElementClickedEventArgs(book));
+                        var book = Readables.First(x => x.id == itemId);
+                        //ItemClicked?.Invoke(this, new ItemEventArgs(book));
                     }
                 });
             }

@@ -15,7 +15,7 @@ namespace Book_Store.MVVM.ViewModel.shop
 		/// <summary>
 		/// Books in cart
 		/// </summary>
-		public ObservableCollection<ShopBook> Books { get; set; }
+		public ObservableCollection<Readable> Readables { get; set; }
 
 		private int _totalBooks;
 		/// <summary>
@@ -49,15 +49,15 @@ namespace Book_Store.MVVM.ViewModel.shop
 		private RelayCommand? _clearCartCommand;
 		private RelayCommand? _removeBookCommand;
 
-		public event EventHandler<ElementClickedEventArgs>? Checkout;
+		public event EventHandler<ItemsEventArgs>? Checkout;
 
 		public CartViewModel()
         {
-            Books = new ObservableCollection<ShopBook>();
-			Books.CollectionChanged += (sender, e) =>
+			Readables = new ObservableCollection<Readable>();
+			Readables.CollectionChanged += (sender, e) =>
 			{
-				TotalBooks = Books.Count;
-				TotalPrice = Books.Sum(x => x.Price);
+				TotalBooks = Readables.Count;
+				TotalPrice = Readables.Sum(x => x.Price);
 			};
 
 		}
@@ -71,8 +71,8 @@ namespace Book_Store.MVVM.ViewModel.shop
 			{
 				return _checkoutCommand ??= new RelayCommand((o) =>
 				{
-					Checkout?.Invoke(this, new ElementClickedEventArgs(Books));
-					Books.Clear();
+					Checkout?.Invoke(this, new ItemsEventArgs(Readables));
+					Readables.Clear();
 				});
 			}
 		}
@@ -86,7 +86,7 @@ namespace Book_Store.MVVM.ViewModel.shop
 			{
 				return _clearCartCommand ??= new RelayCommand((o) =>
 				{
-					Books.Clear();
+					Readables.Clear();
 				});
 			}
 		}
@@ -99,7 +99,7 @@ namespace Book_Store.MVVM.ViewModel.shop
 				{
 					if (o is int bookId)
 					{
-						Books.Remove(Books.First(x => x.Id == bookId));
+						Readables.Remove(Readables.First(x => x.id == bookId));
 					}
 				});
 			}

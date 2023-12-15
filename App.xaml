@@ -29,19 +29,19 @@
                 <v:Library/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type vms:ShopBookInfoViewModel}">
-                <v:ShopBookInfo/>
+                <v:ShopReadableInfo/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type vml:LibraryBookInfoViewModel}">
-                <v:LibraryBookInfo/>
+                <v:LibraryReadableInfo/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type vms:ShopBookCatalogViewModel}">
-                <v:BookCatalog/>
+                <v:Catalog/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type vms:CartViewModel}">
                 <v:Cart/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type vml:LibraryBookCatalogViewModel}">
-                <v:BookCatalog/>
+                <v:Catalog/>
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>

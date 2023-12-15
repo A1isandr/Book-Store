@@ -10,20 +10,5 @@ using Book_Store.src;
 
 namespace Book_Store.MVVM.Model
 {
-    /// <summary>
-    /// Describes behavior of shop book.
-    /// </summary>
-    class ShopBook : CommonShopBook
-	{
-		private decimal _price;
 
-		public override decimal Price
-		{
-			get => _price;
-			set
-			{
-				_price = value;
-			}
-		}
-	}
 }

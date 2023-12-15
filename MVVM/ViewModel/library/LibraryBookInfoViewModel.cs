@@ -9,15 +9,20 @@ using System.Threading.Tasks;
 
 namespace Book_Store.MVVM.ViewModel.library
 {
-    class LibraryBookInfoViewModel : ObservableObject, IBookInfo<LibraryBook>
+    class LibraryBookInfoViewModel : ObservableObject
     {
-        public LibraryBook? Book { get; set; }
+        public Readable? Book { get; set; }
 
-        private RelayCommand? _deleteFromLibraryCommand;
+		/// <summary>
+		/// Fire when item is deleted
+		/// </summary>
+		public event EventHandler<ItemEventArgs>? ItemDeleted;
 
-        public event EventHandler<ElementClickedEventArgs> BookDeleted;
-
-        public RelayCommand? DeleteFromLibraryCommand
+		private RelayCommand? _deleteFromLibraryCommand;
+		/// <summary>
+		/// Delete item from library
+		/// </summary>
+		public RelayCommand? DeleteFromLibraryCommand
         {
             get
             {

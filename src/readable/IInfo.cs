@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Book_Store.src.book
 {
-    interface IBookInfo<T> : INotifyPropertyChanged
+    interface IInfo : INotifyPropertyChanged
     {
         /// <summary>
 		/// Book currently being viewed
 		/// </summary>
-        public T? Book { get; set; }
+        public Readable? Book { get; set; }
     }
 }

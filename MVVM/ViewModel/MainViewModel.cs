@@ -46,7 +46,7 @@ namespace Book_Store.MVVM.ViewModel
 			LibraryVM = new LibraryViewModel();
 			CartVM = new CartViewModel();
 
-			ShopVM.BookAddedToCart += AddBookToCart;
+			ShopVM.ItemAddedToCart += AddItemToCart;
 			CartVM.Checkout += LibraryVM.AddNewBook;
 
 			CurrentView = ShopVM;
@@ -149,12 +149,9 @@ namespace Book_Store.MVVM.ViewModel
 			}
 		}
 
-		private void AddBookToCart(object? sender, ElementClickedEventArgs e)
+		private void AddItemToCart(object? sender, ItemEventArgs e)
 		{
-			if (e.EventInfo is ShopBook book)
-			{
-				CartVM.Books.Add(book);
-			}
+			CartVM.Readables.Add(e.Item);
 		}
 	}
 }
