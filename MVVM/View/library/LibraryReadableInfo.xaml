@@ -22,7 +22,7 @@
            Grid.Row="0"
            Grid.Column="0"
            VerticalAlignment="Top"
-           Source="{Binding Book.Cover}"
+           Source="{Binding Item.Cover}"
            Margin="10, 20, 0, 10">
 
             <Image.Effect>
@@ -56,7 +56,7 @@
                 <Border Name="Author"
                     Grid.Row="0"
                     Margin="0, 0, 0, 20"
-                    Style="{StaticResource BookInfoBorder}">
+                    Style="{StaticResource InfoBorder}">
 
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -69,20 +69,20 @@
                            Text="Автор:"
                            FontFamily="/fnt/#Lobster"
                            HorizontalAlignment="Right"
-                           Style="{StaticResource BookInfo}"/>
+                           Style="{StaticResource ReadableInfo}"/>
 
                         <TextBlock 
                            Grid.Column="1"
-                           Text="{Binding Book.Author}"
+                           Text="{Binding Item.Author}"
                            Margin="20, 0, 0, 0"
-                           Style="{StaticResource BookInfo}"/>
+                           Style="{StaticResource ReadableInfo}"/>
                     </Grid>
                 </Border>
 
                 <Border Name="Genre"
                     Grid.Row="1"
                     Margin="0, 0, 0, 20"
-                    Style="{StaticResource BookInfoBorder}">
+                    Style="{StaticResource InfoBorder}">
 
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -95,20 +95,20 @@
                            Text="Жанр:"
                            FontFamily="/fnt/#Lobster"
                            HorizontalAlignment="Right"
-                           Style="{StaticResource BookInfo}"/>
+                           Style="{StaticResource ReadableInfo}"/>
 
                         <TextBlock 
                            Grid.Column="1"
-                           Text="{Binding Book.Genre}"
+                           Text="{Binding Item.Genre}"
                            Margin="20, 0, 0, 0"
-                           Style="{StaticResource BookInfo}"/>
+                           Style="{StaticResource ReadableInfo}"/>
                     </Grid>
                 </Border>
 
-                <Border Name="PublicationDate"
+                <Border Name="PageArticleCount"
                     Grid.Row="2"
                     Margin="0, 0, 0, 20"
-                    Style="{StaticResource BookInfoBorder}">
+                    Style="{StaticResource InfoBorder}">
 
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -116,25 +116,25 @@
                             <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Name="PublicationDateTextBlock"
+                        <TextBlock Name="PageArticleCountTextBlock"
                            Grid.Column="0"
-                           Text="Год публикации:"
+                           Text="Страниц/Статей:"
                            FontFamily="/fnt/#Lobster"
                            HorizontalAlignment="Right"
-                           Style="{StaticResource BookInfo}"/>
+                           Style="{StaticResource ReadableInfo}"/>
 
                         <TextBlock 
                            Grid.Column="1"
-                           Text="{Binding Book.PublicationDate}"
+                           Text="{Binding Item.PageArticleCount}"
                            Margin="20, 0, 0, 0"
-                           Style="{StaticResource BookInfo}"/>
+                           Style="{StaticResource ReadableInfo}"/>
                     </Grid>
                 </Border>
 
                 <Border Name="Description"
                     Grid.Row="3"
                     Margin="0, 0, 0, 20"
-                    Style="{StaticResource BookInfoBorder}">
+                    Style="{StaticResource InfoBorder}">
 
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -148,40 +148,13 @@
                            FontFamily="/fnt/#Lobster"
                            HorizontalAlignment="Right"
                            VerticalAlignment="Top"
-                           Style="{StaticResource BookInfo}"/>
+                           Style="{StaticResource ReadableInfo}"/>
 
                         <TextBlock 
                            Grid.Column="1"
-                           Text="{Binding Book.Description}"
+                           Text="{Binding Item.Description}"
                            Margin="20, 0, 0, 0"
-                           Style="{StaticResource BookInfo}"/>
-                    </Grid>
-                </Border>
-
-                <Border Name="DateAdded"
-                    Grid.Row="4"
-                    Margin="0, 0, 0, 20"
-                    Style="{StaticResource BookInfoBorder}">
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="3*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock Name="DataAddedTextBlock"
-                           Grid.Column="0"
-                           Text="Дата покупки:"
-                           FontFamily="/fnt/#Lobster"
-                           HorizontalAlignment="Right"
-                           VerticalAlignment="Top"
-                           Style="{StaticResource BookInfo}"/>
-
-                        <TextBlock 
-                           Grid.Column="1"
-                           Text="{Binding Book.DateAdded}"
-                           Margin="20, 0, 0, 0"
-                           Style="{StaticResource BookInfo}"/>
+                           Style="{StaticResource ReadableInfo}"/>
                     </Grid>
                 </Border>
             </Grid>
@@ -218,15 +191,15 @@
                     Panel.ZIndex="2"
                     Background="{StaticResource RefuseBrush}"
                     Style="{StaticResource CommonButton}"
-                    Command="{Binding }">
+                    Command="{Binding DeleteFromLibraryCommand}">
 
                     <Button.Effect>
                         <DropShadowEffect
-                        Color="#f75c5c"
-                        BlurRadius="20" 
-                        Opacity="0.5" 
-                        ShadowDepth="0"
-                        Direction="0"/>
+                            Color="#f75c5c"
+                            BlurRadius="20" 
+                            Opacity="0.5" 
+                            ShadowDepth="0"
+                            Direction="0"/>
                     </Button.Effect>
                 </Button>
             </StackPanel>

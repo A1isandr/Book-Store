@@ -4,14 +4,18 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Book_Store.MVVM.Model;
 
-namespace Book_Store.src.book
+namespace Book_Store.src
 {
+    /// <summary>
+    /// 
+    /// </summary>
     interface IInfo : INotifyPropertyChanged
     {
         /// <summary>
-		/// Book currently being viewed
+		/// Item currently being viewed
 		/// </summary>
-        public Readable? Book { get; set; }
+        public Readable? Item { get; set; }
     }
 }

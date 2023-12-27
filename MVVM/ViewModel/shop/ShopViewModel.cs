@@ -1,33 +1,30 @@
 ﻿using Book_Store.src;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Book_Store.MVVM.Model;
-using Microsoft.EntityFrameworkCore;
 using System.Windows;
-using System.Data.SqlTypes;
-using Book_Store.MVVM.View;
-using System.Reflection;
-using Microsoft.Extensions.DependencyModel;
-using System.Collections.Specialized;
-using System.ComponentModel;
 
 namespace Book_Store.MVVM.ViewModel.shop
 {
-    class ShopViewModel : ObservableObject
+	class ShopViewModel : ObservableObject
     {
-        private ShopBookInfoViewModel BookInfoVM { get; set; }
-        private ShopBookCatalogViewModel CatalogVM { get; set; }
+        private ShopReadableInfoViewModel ReadableInfoVM { get; set; }
+        private ShopCatalogViewModel CatalogVM { get; set; }
 
-        private RelayCommand? _returnToCatalogCommand;
-
+        private RelayCommand? returnToCatalogCommand;
 		/// <summary>
-		/// Fires when the user adds book to the cart.
+		/// Command for returning back to catalog
 		/// </summary>
-		public event EventHandler<ItemEventArgs>? ItemAddedToCart;
+		public RelayCommand ReturnToCatalogCommand
+		{
+			get
+			{
+				return returnToCatalogCommand ??= new RelayCommand((o) =>
+				{
+					CurrentView = CatalogVM;
+					Title = "Магазин";
+					ReturnButtonVisibility = Visibility.Collapsed;
+				});
+			}
+		}
 
         private Visibility returnButtonVisibility;
         /// <summary>
@@ -74,53 +71,36 @@ namespace Book_Store.MVVM.ViewModel.shop
             }
         }
 
+		/// <summary>
+		/// Fires when the user adds book to the cart.
+		/// </summary>
+		public event EventHandler<ItemEventArgs>? ItemAddedToCart;
+
+
+
 		public ShopViewModel()
         {
-            BookInfoVM = new ShopBookInfoViewModel();
-            CatalogVM = new ShopBookCatalogViewModel();
+			ReadableInfoVM = new ShopReadableInfoViewModel();
+            CatalogVM = new ShopCatalogViewModel();
 
-			CatalogVM.ItemClicked += CatalogVM_ItemClicked;
-            BookInfoVM.ItemAddedToCart += CatalogVM_ItemAddedToCart;
+            CatalogVM.ItemClicked += (sender, e) =>
+            {
+				ReadableInfoVM.NewItem(e.Item);
+				CurrentView = ReadableInfoVM;
 
-            CurrentView = CatalogVM;
+				Title += $" / {e.Item.Title}";
+				ReturnButtonVisibility = Visibility.Visible;
+			};
 
-            Title = "Магазин";
+			ReadableInfoVM.ItemAddedToCart += (sender, e) =>
+            {
+				ItemAddedToCart?.Invoke(sender, e);
+			};
+
+			Title = "Магазин";
 			ReturnButtonVisibility = Visibility.Collapsed;
+
+			CurrentView = CatalogVM;
         }
-
-        /// <summary>
-        /// Command for returning back to catalog
-        /// </summary>
-        public RelayCommand ReturnToCatalogCommand
-        {
-            get
-			{
-				return _returnToCatalogCommand ??= new RelayCommand((o) =>
-				{
-					CurrentView = CatalogVM;
-                    Title = "Магазин";
-                    ReturnButtonVisibility = Visibility.Collapsed;
-				});
-			}
-		}
-
-        /// <summary>
-        /// Event handler for BookClicked event.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CatalogVM_ItemClicked(object? sender, ItemEventArgs e)
-        {
-            BookInfoVM.Book = e.Item;
-            CurrentView = BookInfoVM;
-
-            Title += $" / {e.Item.Title}";
-			ReturnButtonVisibility = Visibility.Visible;
-        }
-
-        private void CatalogVM_ItemAddedToCart(object? sender, ItemEventArgs e)
-        {
-            ItemAddedToCart?.Invoke(sender, e);
-		}
     }
 }

@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style x:Key="BookInfo"
+    <Style x:Key="ReadableInfo"
            TargetType="TextBlock">
 
         <Setter Property="VerticalAlignment" Value="Center"/>
@@ -12,7 +12,7 @@
         <Setter Property="Foreground" Value="{DynamicResource MainForegroundBrush}"/>
     </Style>
 
-    <Style x:Key="BookInfoBorder" 
+    <Style x:Key="InfoBorder" 
            TargetType="Border">
 
         <Setter Property="Effect">
@@ -27,6 +27,8 @@
         </Setter>
         <Setter Property="CornerRadius" Value="10"/>
         <Setter Property="Padding" Value="10"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ViewTopBarBackgroundBrush}"/>
         <Setter Property="Background" Value="{DynamicResource BorderBackgroundBrush}"/>
 
         <Style.Triggers>

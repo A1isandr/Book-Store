@@ -198,7 +198,9 @@
                     <ControlTemplate TargetType="RadioButton">
                         <Border
                             CornerRadius="10"
-                            Background="{TemplateBinding Background}">
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="2"
+                            BorderBrush="{DynamicResource WindowBackgroundBrush}">
 
                             <Grid 
                                 VerticalAlignment="Stretch"
@@ -265,35 +267,6 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="MenuButtonAccIcon" 
-           TargetType="{x:Type ToggleButton}"
-           BasedOn="{StaticResource MenuButton}">
-
-        <Style.Setters>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="RadioButton">
-                        <Border
-                            CornerRadius="10"
-                            Background="{TemplateBinding Background}">
-
-                            <Grid 
-                                VerticalAlignment="Stretch"
-                                HorizontalAlignment="Stretch">
-
-                                <Image
-                                    Height="30"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Source="pack://application:,,,/img/account-circle.png"/>
-                            </Grid>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style.Setters>
-    </Style>
-
     <Style x:Key="MenuButtonCartIcon" 
        TargetType="{x:Type ToggleButton}"
        BasedOn="{StaticResource MenuButton}">
@@ -303,23 +276,77 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="RadioButton">
                         <Border
-                        CornerRadius="10"
-                        Background="{TemplateBinding Background}">
+                            CornerRadius="10"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="2"
+                            BorderBrush="{DynamicResource WindowBackgroundBrush}">
 
                             <Grid 
-                            VerticalAlignment="Stretch"
-                            HorizontalAlignment="Stretch">
+                                VerticalAlignment="Stretch"
+                                HorizontalAlignment="Stretch">
 
                                 <Image
-                                Height="30"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Source="pack://application:,,,/img/shopping-basket.png"/>
+                                    Height="30"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Source="pack://application:,,,/img/shopping-basket.png"/>
                             </Grid>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style.Setters>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+
+            <EventTrigger RoutedEvent="MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation
+                            Storyboard.TargetProperty="Effect.Opacity"
+                            To="1" 
+                            Duration="0:0:0.3"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation
+                            Storyboard.TargetProperty="Effect.Opacity"
+                            To="0.5" 
+                            Duration="0:0:0.3"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+
+            <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation
+                            Storyboard.TargetProperty="Opacity"
+                            To="0.5"
+                            Duration="0:0:0.3"/>
+                    </Storyboard>
+                </BeginStoryboard>  
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseLeftButtonUp">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation
+                            Storyboard.TargetProperty="Opacity"
+                            To="1"
+                            Duration="0:0:0.3"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+
+                <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

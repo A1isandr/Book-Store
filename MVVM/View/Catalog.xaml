@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Book_Store.MVVM.View"
              Background="{StaticResource ViewBackgroundBrush}"
+             x:Name="CatalogView"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <ScrollViewer
@@ -13,50 +14,156 @@
         VerticalScrollBarVisibility="Auto">
 
         <Grid Name="Main"
-            MaxWidth="{Binding ElementName=Catalog, Path=ActualWidth}">
+            MaxWidth="{Binding ElementName=CatalogView, Path=ActualWidth}">
 
-            <ItemsControl ItemsSource="{Binding Books}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border Style="{StaticResource Book}">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-                            <Border.InputBindings>
-                                <MouseBinding MouseAction="LeftClick" 
-                                  Command="{Binding DataContext.BookClickedCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                  CommandParameter="{Binding Id}"/>
-                            </Border.InputBindings>
+            <StackPanel Grid.Row="0">
+                <Border
+                    Style="{StaticResource InfoBorder}"
+                    Margin="20, 10, 20, 0"
+                    Padding="0">
 
-                            <StackPanel>
-                                <Image Source="{Binding Cover}"/>
+                    <Label 
+                        Content="Книги"
+                        FontFamily="/fnt/#Lobster"
+                        FontSize="25"
+                        HorizontalAlignment="Center"
+                        Foreground="{StaticResource MainForegroundBrush}"
+                        VerticalAlignment="Center"/>
+                </Border>
 
-                                <TextBlock Text="{Binding Title}" 
-                                    Margin="2"
-                                    FontSize="16"
-                                    FontFamily="/fnt/#Oswald"
-                                    FontWeight="Medium"
-                                    TextWrapping="Wrap"
-                                    TextAlignment="Center"
-                                    HorizontalAlignment="Center"
-                                    Foreground="{StaticResource MainForegroundBrush}"/>
+                <ItemsControl
+                    ItemsSource="{Binding Books}">
 
-                                <TextBlock Text="{Binding Author}" 
-                                    Margin="2, 2, 2, 5"
-                                    FontSize="14"
-                                    FontFamily="/fnt/#Oswald"
-                                    TextWrapping="Wrap"
-                                    TextAlignment="Center"
-                                    HorizontalAlignment="Center"
-                                    Foreground="{StaticResource MainForegroundBrush}"/>
-                            </StackPanel>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"
+                                       Margin="10"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource Readable}">
+
+                                <Border.InputBindings>
+                                    <MouseBinding MouseAction="LeftClick" 
+                                      Command="{Binding DataContext.ItemClickedCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                      CommandParameter="{Binding Id}"/>
+                                </Border.InputBindings>
+
+                                <StackPanel>
+                                    <Image Source="{Binding Cover}"/>
+
+                                    <TextBlock Text="{Binding Title}" 
+                                        Margin="2"
+                                        FontSize="16"
+                                        FontFamily="/fnt/#Oswald"
+                                        FontWeight="Medium"
+                                        TextWrapping="Wrap"
+                                        TextAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Foreground="{StaticResource MainForegroundBrush}"/>
+
+                                    <TextBlock Text="{Binding Author}" 
+                                        Margin="2, 2, 2, 5"
+                                        FontSize="14"
+                                        FontFamily="/fnt/#Oswald"
+                                        TextWrapping="Wrap"
+                                        TextAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Foreground="{StaticResource MainForegroundBrush}"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+
+            <Label
+                Grid.Row="0"
+                Content="Ничего не найдено."
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontFamily="/fnt/#Lobster"
+                FontSize="20"
+                Margin="0, 50, 0, 0"
+                Visibility="{Binding NoBooksFoundLabelVisibility}"/>
+
+            <StackPanel Grid.Row="1">
+
+                <Border
+                    Style="{StaticResource InfoBorder}"
+                    Margin="20, 10, 20, 0"
+                    Padding="0">
+
+                    <Label 
+                        Content="Журналы"
+                        FontFamily="/fnt/#Lobster"
+                        FontSize="25"
+                        HorizontalAlignment="Center"
+                        Foreground="{StaticResource MainForegroundBrush}"
+                        VerticalAlignment="Center"/>
+                </Border>
+
+                <ItemsControl 
+                    ItemsSource="{Binding Magazines}">
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource Readable}">
+
+                                <Border.InputBindings>
+                                    <MouseBinding MouseAction="LeftClick" 
+                                        Command="{Binding DataContext.ItemClickedCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                        CommandParameter="{Binding Id}"/>
+                                </Border.InputBindings>
+
+                                <StackPanel>
+                                    <Image Source="{Binding Cover}"/>
+
+                                    <TextBlock Text="{Binding Title}" 
+                                        Margin="2"
+                                        FontSize="16"
+                                        FontFamily="/fnt/#Oswald"
+                                        FontWeight="Medium"
+                                        TextWrapping="Wrap"
+                                        TextAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Foreground="{StaticResource MainForegroundBrush}"/>
+
+                                    <TextBlock Text="{Binding Author}" 
+                                        Margin="2, 2, 2, 5"
+                                        FontSize="14"
+                                        FontFamily="/fnt/#Oswald"
+                                        TextWrapping="Wrap"
+                                        TextAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Foreground="{StaticResource MainForegroundBrush}"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+
+            <Label
+                Grid.Row="1"
+                Content="Ничего не найдено."
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontFamily="/fnt/#Lobster"
+                FontSize="20"
+                Margin="0, 50, 0, 0"
+                Visibility="{Binding NoMagazinesFoundLabelVisibility}"/>
         </Grid>
     </ScrollViewer>
 </UserControl>

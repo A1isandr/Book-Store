@@ -15,9 +15,10 @@
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         Title="Book Store" 
-        Height="700" Width="1150"
+        Height="700" Width="1200"
         MinHeight="600" MinWidth="850"
         Icon="pack://application:,,,/img/book-fill-negate.png">
+    
     <WindowChrome.WindowChrome>
         <WindowChrome 
             CaptionHeight="0"
@@ -103,7 +104,7 @@
 
         <Grid Name="Main"
             Grid.Row="1"
-            Margin="10, 10, 10, 10">
+            Margin="10, 0, 10, 10">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
@@ -120,31 +121,83 @@
                     Margin="10">
 
                     <Grid
-                        Margin="0, 0, 0, 20">
+                        Margin="0, 0, 0, 10">
                         
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <RadioButton Name="MenuAccountButton"
-                                     Grid.Column="0"
-                                     Height="50"
-                                     Margin="0, 0, 5, 0"
-                                     Background="{StaticResource ViewTopBarBackgroundBrush}"
-                                     Foreground="{StaticResource MainForegroundBrush}"
-                                     Style="{StaticResource MenuButtonAccIcon}"/>
-
                         <RadioButton Name="MenuCartButton"
-                                     Grid.Column="1"
-                                     Height="50"
-                                     Margin="5, 0, 0, 0"
-                                     Background="{StaticResource ViewTopBarBackgroundBrush}"
-                                     Foreground="{StaticResource MainForegroundBrush}"
-                                     Style="{StaticResource MenuButtonCartIcon}"
-                                     Command="{Binding CartCommand}"
-                                     IsChecked="True"/>
+                             Grid.Column="0"
+                             Height="50"
+                             Margin="0, 0, 5, 0"
+                             VerticalAlignment="Center"
+                             Background="{StaticResource ViewTopBarBackgroundBrush}"
+                             Foreground="{StaticResource MainForegroundBrush}"
+                             Style="{StaticResource MenuButtonCartIcon}"
+                             Command="{Binding CartCommand}"/>
+
+                        <Border
+                            Grid.Column="1"
+                            Margin="5, 0, 0, 0"
+                            Height="50"
+                            Padding="0"
+                            BorderBrush="Black"
+                            Background="{StaticResource ViewTopBarBackgroundBrush}"
+                            Style="{StaticResource InfoBorder}">
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Label
+                                    Grid.Row="0"
+                                    Content="{Binding TotalReadablesInCart}"
+                                    FontFamily="/fnt/#Lobster"
+                                    FontSize="14"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Padding="0, 0, 0, 2"/>
+
+                                <Rectangle
+                                    Grid.Row="1"
+                                    VerticalAlignment="Center"
+                                    Height="1"
+                                    Fill="Black"/>
+
+                                <StackPanel
+                                    Grid.Row="2"
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Center">
+
+                                    <Label
+                                        Content="{Binding TotalCartPrice}"
+                                        FontFamily="/fnt/#Lobster"
+                                        FontSize="14"
+                                        Padding="0, 0, 0, 2"
+                                        Margin="0, 0, 4, 0"/>
+
+                                    <Label
+                                        Content="₽"
+                                        FontFamily="/fnt/#Lobster"
+                                        FontSize="14"
+                                        Padding="0, 0, 0, 2"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
                     </Grid>
+                    
+                    
+
+                    <Rectangle Name="Separator"
+                               Margin="0, 0, 0, 10"
+                               Fill="Black"
+                               Height="2"/>
 
                     <RadioButton Name="MenuShopButton"
                                  Content="Магазин"

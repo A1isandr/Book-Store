@@ -14,11 +14,10 @@
                 <ResourceDictionary Source="dict\HeaderButtons.xaml" />
                 <ResourceDictionary Source="dict\ScrollBars.xaml" />
                 <ResourceDictionary Source="dict\SearchBoxes.xaml" />
-                <ResourceDictionary Source="dict\MenuButton.xaml" />
                 <ResourceDictionary Source="dict\SearchButtons.xaml" />
                 <ResourceDictionary Source="dict\color-scheme\ColorScheme.xaml" />
-                <ResourceDictionary Source="dict\Book.xaml" />
-                <ResourceDictionary Source="dict\BookInfo.xaml" />
+                <ResourceDictionary Source="dict\Readable.xaml" />
+                <ResourceDictionary Source="dict\ReadableInfo.xaml" />
                 <ResourceDictionary Source="dict\Buttons.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
@@ -28,20 +27,20 @@
             <DataTemplate DataType="{x:Type vml:LibraryViewModel}">
                 <v:Library/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type vms:ShopBookInfoViewModel}">
+            <DataTemplate DataType="{x:Type vms:ShopReadableInfoViewModel}">
                 <v:ShopReadableInfo/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type vml:LibraryBookInfoViewModel}">
+            <DataTemplate DataType="{x:Type vml:LibraryReadableInfoViewModel}">
                 <v:LibraryReadableInfo/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type vms:ShopBookCatalogViewModel}">
+            <DataTemplate DataType="{x:Type vms:ShopCatalogViewModel}">
+                <v:Catalog/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vml:LibraryCatalogViewModel}">
                 <v:Catalog/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type vms:CartViewModel}">
                 <v:Cart/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type vml:LibraryBookCatalogViewModel}">
-                <v:Catalog/>
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>

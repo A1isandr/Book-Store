@@ -6,7 +6,7 @@
     <SolidColorBrush x:Key="StandardBackgroundBrush"
                  Color="Black" />
     <SolidColorBrush x:Key="HoverBorderBrush"
-                 Color="#DDD" />
+                 Color="White" />
     <SolidColorBrush x:Key="SelectedBackgroundBrush"
                  Color="White" />
     <SolidColorBrush x:Key="SelectedForegroundBrush"

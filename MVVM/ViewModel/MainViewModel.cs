@@ -1,30 +1,118 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using Book_Store.MVVM.Model;
-using Book_Store.MVVM.View;
-using Book_Store.MVVM.ViewModel.library;
+﻿using Book_Store.MVVM.ViewModel.library;
 using Book_Store.MVVM.ViewModel.shop;
 using Book_Store.src;
+using System.Windows;
 
 namespace Book_Store.MVVM.ViewModel
 {
-    class MainViewModel : ObservableObject
+	class MainViewModel : ObservableObject
     {
-		private RelayCommand? _closeWindowCommand;
-		private RelayCommand? _maxWindowCommand;
-		private RelayCommand? _minWindowCommand;
-
-        private RelayCommand? _shopCommand;
-        private RelayCommand? _libraryCommand;
-		private RelayCommand? _cartCommand;
-
 		private ShopViewModel ShopVM { get; set; }
 		private LibraryViewModel LibraryVM { get; set; }
-		public CartViewModel CartVM { get; set; }
+		private CartViewModel CartVM { get; set; }
+
+		private RelayCommand? shopCommand;
+		/// <summary>
+		/// Changes the current view to shop.
+		/// </summary>
+		public RelayCommand ShopCommand
+		{
+			get
+			{
+				return shopCommand ??= new RelayCommand((o) =>
+				{
+					CurrentView = ShopVM;
+				});
+			}
+		}
+
+		private RelayCommand? libraryCommand;
+		/// <summary>
+		/// Changes the current view to library.
+		/// </summary>
+		public RelayCommand LibraryCommand
+		{
+			get
+			{
+				return libraryCommand ??= new RelayCommand((o) =>
+				{
+					CurrentView = LibraryVM;
+				});
+			}
+		}
+
+		private RelayCommand? cartCommand;
+		/// <summary>
+		/// Changes the current view to cart.
+		/// </summary>
+		public RelayCommand CartCommand
+		{
+			get
+			{
+				return cartCommand ??= new RelayCommand((o) =>
+				{
+					CurrentView = CartVM;
+				});
+			}
+		}
+
+		private RelayCommand? closeWindowCommand;
+		/// <summary>
+		/// Closes the window.
+		/// </summary>
+		public RelayCommand CloseWindowCommand
+		{
+			get
+			{
+				return closeWindowCommand ??= new RelayCommand((o) =>
+				{
+					if (o is MainWindow window)
+					{
+						window.Close();
+					}
+				});
+			}
+		}
+
+		private RelayCommand? maxWindowCommand;
+		/// <summary>
+		/// Maximizes the window.
+		/// </summary>
+		public RelayCommand MaxWindowCommand
+		{
+			get
+			{
+				return maxWindowCommand ??= new RelayCommand((o) =>
+				{
+					if (o is MainWindow window)
+					{
+						window.WindowState =
+						(
+							window.WindowState == WindowState.Maximized ? WindowState.Normal :
+																		  WindowState.Maximized
+						);
+					}
+				});
+			}
+		}
+
+		private RelayCommand? minWindowCommand;
+		/// <summary>
+		/// Minimizes the window.
+		/// </summary>
+		public RelayCommand MinWindowCommand
+		{
+			get
+			{
+				return minWindowCommand ??= new RelayCommand((o) =>
+				{
+					if (o is MainWindow window)
+					{
+						window.WindowState = WindowState.Minimized;
+					}
+				});
+			}
+		}
 
 		private object? _currentView;
         /// <summary>
@@ -40,118 +128,60 @@ namespace Book_Store.MVVM.ViewModel
             }
         }
 
-        public MainViewModel()
+		private decimal totalCartPrice;
+		/// <summary>
+		/// 
+		/// </summary>
+		public decimal TotalCartPrice
+		{
+			get => totalCartPrice;
+			set
+			{
+				totalCartPrice = value;
+				OnPropertyChanged(nameof(TotalCartPrice));
+			}
+		}
+
+		private int totalReadablesInCart;
+		/// <summary>
+		/// 
+		/// </summary>
+		public int TotalReadablesInCart
+		{
+			get => totalReadablesInCart;
+			set
+			{
+				totalReadablesInCart = value;
+				OnPropertyChanged(nameof(TotalReadablesInCart));
+			}
+		}
+
+
+
+		public MainViewModel()
         {
             ShopVM = new ShopViewModel();
 			LibraryVM = new LibraryViewModel();
 			CartVM = new CartViewModel();
 
-			ShopVM.ItemAddedToCart += AddItemToCart;
-			CartVM.Checkout += LibraryVM.AddNewBook;
+			ShopVM.ItemAddedToCart += CartVM.AddNewItem;
+
+			CartVM.Checkout += LibraryVM.AddNewItems;
+
+			CartVM.Readables.CollectionChanged += (sender, e) =>
+			{
+				RefershCartStats();
+			};
+
+			RefershCartStats();
 
 			CurrentView = ShopVM;
         }
 
-		/// <summary>
-		/// Changes the current view to shop.
-		/// </summary>
-		public RelayCommand ShopCommand
+		private void RefershCartStats()
 		{
-			get
-			{
-				return _shopCommand ??= new RelayCommand((o) =>
-				{
-					CurrentView = ShopVM;
-				});
-			}
-		}
-
-		/// <summary>
-		/// Changes the current view to library.
-		/// </summary>
-		public RelayCommand LibraryCommand
-		{
-			get
-			{
-				return _libraryCommand ??= new RelayCommand((o) =>
-				{
-					CurrentView = LibraryVM;
-				});
-			}
-		}
-
-		/// <summary>
-		/// Changes the current view to cart.
-		/// </summary>
-		public RelayCommand CartCommand
-		{
-			get
-			{
-				return _cartCommand ??= new RelayCommand((o) =>
-				{
-					CurrentView = CartVM;
-				});
-			}
-		}
-
-		/// <summary>
-		/// Closes the window.
-		/// </summary>
-		public RelayCommand CloseWindowCommand
-		{
-			get
-			{
-				return _closeWindowCommand ??= new RelayCommand((o) =>
-				{
-					if (o is MainWindow window)
-					{
-						window.Close();
-					}
-				});
-			}
-		}
-
-		/// <summary>
-		/// Maximizes the window.
-		/// </summary>
-		public RelayCommand MaxWindowCommand
-		{
-			get
-			{
-				return _maxWindowCommand ??= new RelayCommand((o) =>
-				{
-					if (o is MainWindow window)
-					{
-						window.WindowState =
-						(
-							window.WindowState == WindowState.Maximized ? WindowState.Normal :
-																		  WindowState.Maximized
-						);
-					}
-				});
-			}
-		}
-
-		/// <summary>
-		/// Minimizes the window.
-		/// </summary>
-		public RelayCommand MinWindowCommand
-		{
-			get
-			{
-				return _minWindowCommand ??= new RelayCommand((o) =>
-				{
-					if (o is MainWindow window)
-					{
-						window.WindowState = WindowState.Minimized;
-					}
-				});
-			}
-		}
-
-		private void AddItemToCart(object? sender, ItemEventArgs e)
-		{
-			CartVM.Readables.Add(e.Item);
+			TotalCartPrice = CartVM.TotalPrice;
+			TotalReadablesInCart = CartVM.TotalReadables;
 		}
 	}
 }

@@ -1,22 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using Book_Store.MVVM.Model;
+﻿using Book_Store.MVVM.Model;
 using Book_Store.src;
-using Microsoft.EntityFrameworkCore;
+using System.Windows;
 
 namespace Book_Store.MVVM.ViewModel.library
 {
-    class LibraryViewModel : ObservableObject
+	class LibraryViewModel : ObservableObject
     {
-        private LibraryBookInfoViewModel BookInfoVM { get; set; }
-        private LibraryBookCatalogViewModel CatalogVM { get; set; }
+        private LibraryReadableInfoViewModel ReadableInfoVM { get; set; }
+        private LibraryCatalogViewModel CatalogVM { get; set; }
 
-		private RelayCommand? _returnToCatalogCommand;
+		private RelayCommand? returnToCatalogCommand;
+		/// <summary>
+		/// Returns to the catalog.
+		/// </summary>
+		public RelayCommand ReturnToCatalogCommand
+		{
+			get
+			{
+				return returnToCatalogCommand ??= new RelayCommand((o) =>
+				{
+					CurrentView = CatalogVM;
+					ReturnButtonVisibility = Visibility.Collapsed;
+					Title = "Моя Библиотека";
+				});
+			}
+		}
 
 		private Visibility returnButtonVisibility;
 		/// <summary>
@@ -63,60 +71,60 @@ namespace Book_Store.MVVM.ViewModel.library
             }
         }
 
+
+
         public LibraryViewModel()
         {
-            BookInfoVM = new LibraryBookInfoViewModel();
-            CatalogVM = new LibraryBookCatalogViewModel();
+            ReadableInfoVM = new LibraryReadableInfoViewModel();
+            CatalogVM = new LibraryCatalogViewModel();
 
-            CatalogVM.ItemClicked += CatalogVM_BookClicked;
-
-            CurrentView = CatalogVM;
-
-            Title = "Моя Библиотека";
-			ReturnButtonVisibility = Visibility.Collapsed;
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		public RelayCommand ReturnToCatalogCommand
-		{
-			get
+			ReadableInfoVM.ItemDeletedFromLibrary += (sender, e) =>
 			{
-				return _returnToCatalogCommand ??= new RelayCommand((o) =>
+				CurrentView = CatalogVM;
+
+				if (e.Item is Book book)
 				{
-					CurrentView = CatalogVM;
-					ReturnButtonVisibility = Visibility.Collapsed;
-					Title = "Моя Библиотека";
-				});
-			}
+					CatalogVM.Books.Remove(book);
+				}
+				else if (e.Item is Magazine magazine)
+				{
+					CatalogVM.Magazines.Remove(magazine);
+				}
+			};
+
+			CatalogVM.ItemClicked += (sender, e) =>
+			{
+				ReadableInfoVM.Item = e.Item;
+				CurrentView = ReadableInfoVM;
+
+				Title += $" / {e.Item.Title}";
+				ReturnButtonVisibility = Visibility.Visible;
+			};
+
+			Title = "Моя Библиотека";
+			ReturnButtonVisibility = Visibility.Collapsed;
+
+			CurrentView = CatalogVM;
 		}
-
-		/// <summary>
-		/// Event handler for BookClicked event.
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void CatalogVM_BookClicked(object? sender, ItemEventArgs e)
-        {
-            BookInfoVM.Book = e.Item;
-            CurrentView = BookInfoVM;
-
-            Title += $" / {e.Item.Title}";
-			ReturnButtonVisibility = Visibility.Visible;
-        }
 
         /// <summary>
         /// Event handler for BookPurchased event.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name=""></param>
-        public void AddNewBook(object? sender, ItemsEventArgs e)
+        public void AddNewItems(object? sender, ItemsEventArgs e)
         {
 			foreach (var item in e.Items)
 			{
-				//CatalogVM.Readables.Add(item);
+				if (item is Book book)
+				{
+					CatalogVM.Books.Add(book);
+				}
+				else if (item is Magazine magazine)
+				{
+					CatalogVM.Magazines.Add(magazine);
+				}
 			}
 		}
-    }
+	}
 }

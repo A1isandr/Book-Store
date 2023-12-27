@@ -9,18 +9,18 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition MinWidth="200"/>
+            <ColumnDefinition/>
+            <ColumnDefinition MinWidth="200" Width="200"/>
         </Grid.ColumnDefinitions>
 
         <ScrollViewer
             Grid.Column="0"
             HorizontalScrollBarVisibility="Hidden"
             VerticalScrollBarVisibility="Auto">
-
+    
             <ItemsControl 
                 Grid.Column="0"
-                ItemsSource="{Binding Books}"
+                ItemsSource="{Binding Readables}"
                 Padding="10, 10, 10, 0">
 
                 <ItemsControl.ItemsPanel>
@@ -33,8 +33,8 @@
                         <Border
                             Padding="5"
                             Margin="0, 0, 0, 10"
-                            Style="{StaticResource BookInfoBorder}">
-                            
+                            Style="{StaticResource InfoBorder}">
+
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
@@ -62,6 +62,7 @@
                                            FontSize="16"
                                            FontFamily="/fnt/#Oswald"
                                            FontWeight="Medium"
+                                           TextTrimming="CharacterEllipsis"
                                            TextWrapping="Wrap"
                                            TextAlignment="Center"
                                            HorizontalAlignment="Center"
@@ -92,7 +93,8 @@
                                                FontFamily="/fnt/#Oswald"
                                                TextWrapping="Wrap"/>
 
-                                    <Label Content="₽"
+                                    <Label 
+                                           Content="₽"
                                            Grid.RowSpan="2"
                                            Grid.Column="3"
                                            VerticalAlignment="Center"
@@ -109,7 +111,7 @@
                                     Height="30"
                                     Background="White"
                                     Style="{StaticResource CommonButtonFlat}"
-                                    Command="{Binding DataContext.RemoveBookCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                    Command="{Binding DataContext.RemoveItemCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                     CommandParameter="{Binding Id}">
 
                                     <Button.Effect>
@@ -128,9 +130,19 @@
             </ItemsControl>
         </ScrollViewer>
 
+        <Label Name="CartIsEmptyLabel"
+            Grid.Column="0"
+            Content="Корзина пуста."
+            FontFamily="/fnt/#Lobster"
+            FontSize="20"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Visibility="{Binding CartIsEmptyLabelVisibility}"/>
+
         <Border
             Grid.Column="1"
-            Background="#eb9d65">
+            Background="#eb9d65"
+            Margin="5, 0, 0, 0">
 
             <Border.Effect>
                 <DropShadowEffect
@@ -155,7 +167,7 @@
 
                     <Border Name="TotalAmount"
                         Margin="0, 0, 0, 20"
-                        Style="{StaticResource BookInfoBorder}">
+                        Style="{StaticResource InfoBorder}">
 
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -168,20 +180,21 @@
                                 Text="Всего в корзине:"
                                 FontFamily="/fnt/#Lobster"
                                 HorizontalAlignment="Right"
-                                Style="{StaticResource BookInfo}"/>
+                                Style="{StaticResource ReadableInfo}"/>
 
                             <TextBlock 
                                 Grid.Column="1"
-                                Text="{Binding TotalBooks}"
-                                Margin="20, 0, 0, 0"
-                                Style="{StaticResource BookInfo}"/>
+                                Text="{Binding TotalReadables}"
+                                TextTrimming="CharacterEllipsis"
+                                Margin="10, 0, 0, 0"
+                                Style="{StaticResource ReadableInfo}"/>
                         </Grid>
                     </Border>
 
                     <Border Name="TotalPrice"
                         Grid.Row="0"
                         Margin="0, 0, 0, 20"
-                        Style="{StaticResource BookInfoBorder}">
+                        Style="{StaticResource InfoBorder}">
 
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -196,15 +209,17 @@
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
                                 FontSize="16"
-                                Style="{StaticResource BookInfo}"/>
+                                Style="{StaticResource ReadableInfo}"/>
 
                             <StackPanel
                                 Grid.Column="1"
                                 Orientation="Horizontal"
-                                Margin="20, 0, 0, 0">
+                                Margin="10, 0, 0, 0">
 
-                                <TextBlock Text="{Binding TotalPrice}"
-                                    Style="{StaticResource BookInfo}"/>
+                                <TextBlock 
+                                    Text="{Binding TotalPrice}"
+                                    TextTrimming="CharacterEllipsis"
+                                    Style="{StaticResource ReadableInfo}"/>
 
                                 <Label Content="₽"
                                     Grid.RowSpan="2"
@@ -222,7 +237,10 @@
                 <Border
                     Grid.Row="1"
                     Background="White"
-                    CornerRadius="10, 10, 0, 0">
+                    MaxHeight="200"
+                    VerticalAlignment="Bottom"
+                    CornerRadius="10"
+                    Margin="5, 0, 5, 5">
 
                     <Grid>
                         <Grid.RowDefinitions>
@@ -235,8 +253,9 @@
                             Content="Очистить корзину"
                             FontSize="18"
                             FontFamily="/fnt/#Lobster"
-                            Background="{StaticResource RefuseBrush}"
                             Margin="5"
+                            Height="50"
+                            Background="{StaticResource RefuseBrush}"
                             Style="{StaticResource CommonButton}"
                             Command="{Binding ClearCartCommand}">
 
@@ -255,8 +274,9 @@
                             Content="Оформить покупку"
                             FontSize="18"
                             FontFamily="/fnt/#Lobster"
-                            Background="{StaticResource AcceptBrush}"
                             Margin="5"
+                            Height="50"
+                            Background="{StaticResource AcceptBrush}"
                             Style="{StaticResource CommonButton}"
                             Command="{Binding CheckoutCommand}">
 
