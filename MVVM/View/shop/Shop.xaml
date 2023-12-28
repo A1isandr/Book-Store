@@ -47,25 +47,34 @@
                         Background="White"
                         Visibility="{Binding ReturnButtonVisibility}"
                         Command="{Binding ReturnToCatalogCommand}"
-                        Style="{StaticResource CommonButton}">
+                        Style="{StaticResource CommonButton}"/>
 
-                    <Button.Effect>
-                        <DropShadowEffect
-                            Color="Black" 
-                            BlurRadius="10" 
-                            Opacity="0.5" 
-                            ShadowDepth="0"
-                            Direction="0"/>
-                    </Button.Effect>
-                </Button>
-
-                <TextBox Name="SearchBar"
+                <StackPanel
                     Grid.Column="1"
-                    Width="250"
-                    Height="30"
-                    HorizontalAlignment="Left"
-                    Style="{StaticResource SearchBox}"/>
+                    Orientation="Horizontal">
+                    
+                    <TextBox Name="SearchBar"
+                        Width="250"
+                        Height="30"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource SearchBox}"/>
 
+                    <Button
+                        Width="30"
+                        Height="30"
+                        Background="White"
+                        Style="{StaticResource CommonButton}"
+                        Command="{Binding SearchCommand}"
+                        CommandParameter="{Binding ElementName=SearchBar, Path=Text, UpdateSourceTrigger=PropertyChanged}">
+
+                        <Button.Content>
+                            <Image
+                                Width="20"
+                                Source="pack://application:,,,/img/search.png"/>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+                
                 <TextBlock Name="Title"
                     Grid.Column="2"
                     Text="{Binding Title}"

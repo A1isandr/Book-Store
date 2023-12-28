@@ -36,7 +36,6 @@
                             Opacity="0.8" 
                             ShadowDepth="0"
                             Direction="0">
-
                         </DropShadowEffect>
                     </Setter.Value>
                 </Setter>

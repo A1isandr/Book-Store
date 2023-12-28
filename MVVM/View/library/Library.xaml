@@ -47,17 +47,7 @@
                         Background="White"
                         Visibility="{Binding ReturnButtonVisibility}"
                         Command="{Binding ReturnToCatalogCommand}"
-                        Style="{StaticResource CommonButton}">
-
-                    <Button.Effect>
-                        <DropShadowEffect
-                            Color="Black" 
-                            BlurRadius="10" 
-                            Opacity="0.5" 
-                            ShadowDepth="0"
-                            Direction="0"/>
-                    </Button.Effect>
-                </Button>
+                        Style="{StaticResource CommonButton}"/>
 
                 <TextBox Name="SearchBar"
                     Grid.Column="1"

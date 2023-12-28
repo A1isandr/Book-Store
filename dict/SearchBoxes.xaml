@@ -62,12 +62,6 @@
                                     </Style>
                                 </TextBlock.Style>
                             </TextBlock>
-
-                            <Button Name="SearchButton"
-                                HorizontalAlignment="Right"
-                                Width="30"
-                                Height="30"
-                                Style="{StaticResource SearchButton}"/>
                         </Grid>
                     </Border>
                 </ControlTemplate>

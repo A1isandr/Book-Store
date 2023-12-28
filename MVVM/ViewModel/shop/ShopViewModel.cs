@@ -26,7 +26,30 @@ namespace Book_Store.MVVM.ViewModel.shop
 			}
 		}
 
-        private Visibility returnButtonVisibility;
+        private RelayCommand? searchCommand;
+		/// <summary>
+		/// Command for searching in the shop
+		/// </summary>
+		public RelayCommand SearchCommand
+		{
+			get
+			{
+				return searchCommand ??= new RelayCommand((o) =>
+				{
+					if (o is not null)
+                    {
+                        if (o is string query)
+                        {
+							CatalogVM.Search(query);
+
+							CurrentView = CatalogVM;
+						}
+                    }
+				});
+			}
+		}
+
+		private Visibility returnButtonVisibility;
         /// <summary>
         /// Visibility of the return button.
         /// </summary>

@@ -11,8 +11,33 @@ namespace Book_Store.MVVM.ViewModel.shop
     {
         private readonly StoreContext db = new();
 
-		public ObservableCollection<Book> Books { get; set; }
-		public ObservableCollection<Magazine> Magazines { get; set; }
+		private ObservableCollection<Book> books;
+		/// <summary>
+		/// 
+		/// </summary>
+		public ObservableCollection<Book> Books
+		{
+			get => books;
+			set
+			{
+				books = value;
+				OnPropertyChanged(nameof(Books));
+			}
+		}
+
+		private ObservableCollection<Magazine> magazines;
+		/// <summary>
+		/// 
+		/// </summary>
+		public ObservableCollection<Magazine> Magazines
+		{
+			get => magazines;
+			set
+			{
+				magazines = value;
+				OnPropertyChanged(nameof(Magazines));
+			}
+		}
 
 		private RelayCommand? itemClickedCommand;
 		/// <summary>
@@ -89,6 +114,27 @@ namespace Book_Store.MVVM.ViewModel.shop
 
 			NoMagazinesFoundLabelVisibility = Magazines.Count == 0 ? Visibility.Visible :
 															         Visibility.Collapsed;
+		}
+
+		public void Search(string query)
+		{
+			db.Database.EnsureCreated();
+
+
+
+			Magazines = new
+			(
+				db.Readables.OfType<Magazine>()
+							.Where(r => r.Title.ToLower() == query.ToLower())
+							.ToList()
+			);
+
+			Books = new
+			(
+				db.Readables.OfType<Book>()
+							.Where(r => r.Title.ToLower() == query.ToLower())
+							.ToList()
+			);
 		}
     }
 }
